@@ -23,6 +23,7 @@ html {
   --bg-white-clr: #ffffff;
 
   --main-transtion: 250ms;
+  --border: 5px;
 }
 body {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -59,6 +60,33 @@ header .links  {
   display: flex;
   align-items: center;
 }
+header .burger  {
+  display: none;
+  width: 40px;
+  color: var(--bg-white-clr);
+  font-size: 2rem;
+}
+@media(max-width: 768px) {
+  header .burger {
+    display: block;
+  }
+  header .burger:hover + .links  {
+    display: block;
+  }
+  header .links {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--main-clr);
+    flex-direction: column;
+  }
+  header .link {
+    border-bottom: 1px solid var(--main-alt-clr);
+  }
+}
 header .links a {
   display: flex;
   justify-content: center;
@@ -86,41 +114,75 @@ header .links a:hover {
 .landing .container {
   display: flex;
 }
+.landing img {
+  max-height: 400px;
+}
+@media(max-width: 991px) {
+  .landing .container {
+    flex-wrap: wrap;  
+    text-align: center;
+    flex-direction: column;
+  }
+  .landing img {
+    margin-top: 2rem;
+    transform: rotate(-90deg);
+    max-height: 200px;
+  }
+}
 .landing .content .welcome {
+  margin-top: 4rem;
   text-transform: capitalize;
   font-weight: 700;
-  font-size: 72px;
+  font-size: 55px;
 }
 .landing .content .name {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 400;
   text-transform: capitalize;
   margin: 1rem 0 ;
+}
+@media(min-width: 1200px) {
+  .landing .content .welcome {
+    font-size: 72px;
+  }
+  .landing .content .name {
+    font-size: 1.75rem;
+  }
 }
 .landing .content .description {
   font-weight: 400;
   font-size: 2rem;
   margin: 3rem 0;
 }
+@media (max-width: 767px) {
+  .landing .content .description {
+    font-size: 1.5rem;
+  }
+}
 .landing .content .call {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--bg-white-clr);
-  background-color: var(--accent-clr);
   width: 251px;
   height: 66px;
-}
-.landing .content .link {
+  color: var(--bg-white-clr);
+  background-color: var(--accent-clr);
+  border-radius: var(--border);
+  transition-duration: var(--main-transtion);
   font-size: 1.75rem;
   font-weight: bold;
   text-transform: capitalize;
-  margin-right: .5rem;
+}
+.landing .content .call:hover {
+  opacity: .7;
+}
+@media(max-width: 991px) {
+  .landing .content .call {
+    margin: 0 auto;
+  }
 }
 .landing .content i {
+  margin-left: .75rem;
   font-size: 1.5rem;
-}
-.landing img {
-  max-height: 400px;
 }
 /* End landing */
