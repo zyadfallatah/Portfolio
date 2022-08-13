@@ -7,6 +7,18 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --main-clr: #0E79B2;
+  --main-alt-clr: #0093E1;
+
+  --accent-clr: #25D5A4;
+
+  --main-black-clr: #002D40;
+  --main-white-clr: #D9ECF2;
+
+  --bg-white-clr: #ffffff;
+  --text-white-clr: #f5f5f5;
+}
 body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
