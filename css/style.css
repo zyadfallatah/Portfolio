@@ -1,3 +1,4 @@
+/* Start General rules */
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -7,18 +8,68 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --main-clr: #0E79B2;
   --main-alt-clr: #0093E1;
-
+  
   --accent-clr: #25D5A4;
-
+  
   --main-black-clr: #002D40;
   --main-white-clr: #D9ECF2;
-
+  
   --bg-white-clr: #ffffff;
-  --text-white-clr: #f5f5f5;
+
+  --main-transtion: 250ms;
 }
 body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
+ul {
+  list-style: none;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+section {
+  position: relative;
+}
+/* End General rules */
+
+/* Start Header */
+header {
+  background-color: var(--main-clr);
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  max-height: 75px;
+}
+header .links  {
+  display: flex;
+  align-items: center;
+}
+header .links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  padding: 0 1.5rem;
+  min-height: 75px;
+  color: var(--bg-white-clr);
+  transition-duration: var(--main-transtion);
+}
+header .links a:hover {
+  background-color: #002D40;
+}
+/* End Header */
