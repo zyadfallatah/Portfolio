@@ -88,3 +88,31 @@
   }
 }
 /* End containers */
+
+/* Start Title */
+.main-heading {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #002D40;
+  font-size: 4rem;
+  text-transform: capitalize;
+  gap: 1.5rem;
+  margin-bottom: 6rem;
+}
+.main-heading span {
+  width: 50px;
+  height: 50px;
+  background-color: var(--clr);
+  transform: rotate(34deg);
+}
+@media(max-width: 991px) {
+  .main-heading {
+    font-size: 3rem;
+  }
+  .main-heading span {
+    width: 40px;
+    height: 40px;
+  }
+}
+/* End Title */

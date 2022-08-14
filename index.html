@@ -31,7 +31,7 @@
 
 <body>
   <!-- Start Header -->
-  <header>
+  <header id="home">
     <div class="container">
       <img class="logo"src="images/logo-blue.jpeg" alt="logo">
       <nav class="navigation">
@@ -39,8 +39,8 @@
           <i class="fa-solid fa-bars"></i>
         </div>
         <ul class="links">
-          <li class="link"><a href="#">home</a></li>
-          <li class="link"><a href="#">projects</a></li>
+          <li class="link"><a href="#home">home</a></li>
+          <li class="link"><a href="#projects">projects</a></li>
           <li class="link"><a href="#">about me</a></li>
           <li class="link"><a href="#">skills</a></li>
           <li class="link"><a href="#">contact</a></li>
@@ -58,7 +58,7 @@
         <h3 class="name">i'm zyad , frontend developer</h3>
         <h2 class="description">I can help You to build an astonishing , distinctive and reliable website .</h2>
 
-        <a class="call" href="#">
+        <a class="call" href="#projects">
           see my works
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -67,5 +67,91 @@
     </div>
   </section>
   <!-- End Landing -->
+
+  <!-- Start Projects -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="main-heading">
+        <span style="--clr:#002D40"></span>
+        projects
+        <span style="--clr:#D9ECF2"></span>
+      </h2>
+      <div class="main-content">
+        <div class="box">
+          <img class="projects-arrow"src="images/arrow.svg" alt="arrow-image right side">
+          <div class="content">
+            <div class="text">
+              <h3 class="title">leon template</h3>
+              <p class="para">This is a project i've built for these people and it's for this kind of thing , 
+                other more Description about this project
+              </p>
+              <div class="links">
+                <a href="https://zyadfallatah.github.io/templateNum1/" class="view">
+                  view project
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="https://github.com/zyadfallatah/templateNum1" class="source">
+                  source code
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="overlay">
+              <img class="projects-image"src="images/leon-template.png" alt="leon-template">
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <img class="projects-arrow"src="images/arrow.svg" alt="arrow-image right side">
+          <div class="content">
+            <div class="text">
+              <h3 class="title">Kasper template</h3>
+              <p class="para">This is a project i've built for these people and it's for this kind of thing , 
+                other more Description about this project
+              </p>
+              <div class="links">
+                <a href="https://zyadfallatah.github.io/templateNum2/" class="view">
+                  view project
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="https://github.com/zyadfallatah/templateNum2" class="source">
+                  source code
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="overlay">
+              <img class="projects-image" src="images/kasper-template.png" alt="kasper-template">
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <img class="projects-arrow"src="images/arrow.svg" alt="arrow-image right side">
+          <div class="content">
+            <div class="text">
+              <h3 class="title">elzero template</h3>
+              <p class="para">This is a project i've built for these people and it's for this kind of thing , 
+                other more Description about this project
+              </p>
+              <div class="links">
+                <a href="https://zyadfallatah.github.io/templateNum3/" class="view">
+                  view project
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="https://github.com/zyadfallatah/templateNum3" class="source">
+                  source code
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="overlay">
+              <img class="projects-image"src="images/elzero-template.png" alt="leon-template">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Project -->
 </body>
 </html>
