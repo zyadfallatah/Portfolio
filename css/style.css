@@ -294,3 +294,71 @@ header .links a:hover {
   border-radius: var(--border);
 }
 /* End projects */
+
+/* Start Skills */
+.skills {
+  overflow: hidden;
+  background-color: var(--main-clr);
+  padding: 0;
+}
+.skills .container {
+  display: flex;
+  gap: 2rem;
+}
+.skills .main-heading {
+  color: var(--bg-white-clr);
+}
+.skills .left-side {
+  flex-basis: 50%;
+  background-color: var(--main-alt-clr);
+  padding: var(--main-padding) 1rem;
+  min-width: 639px;
+}
+.skills .hero{
+  align-self: center;
+  max-height: 430px;
+}
+@media(max-width: 991px) {
+  .skills .left-side {
+    min-width: 100%;
+  }
+  .skills .hero {
+    display: none;
+  }
+}
+@media(min-width: 1200px) {
+  .skills .hero {
+    max-height: none;
+  }
+}
+.skills .content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  row-gap: 5rem;
+}
+.skills .skill-container .title,
+.skill-container .skill-name  {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: var(--bg-white-clr)
+}
+.skill-container .skill-name {
+  margin-top: .75rem;
+  margin-left: 3rem;
+}
+.skill-container .title h3 {
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+@media(max-width: 640px) {
+  .skill-container .title h3 {
+    font-size: 1.6rem;
+  }
+}
+.skill-container .skill-name p{
+  font-size: 1.25rem;
+  text-transform: capitalize;
+}
+/* End Skills */

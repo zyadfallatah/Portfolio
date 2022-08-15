@@ -94,6 +94,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  width: fit-content;
   color: #002D40;
   font-size: 4rem;
   text-transform: capitalize;
