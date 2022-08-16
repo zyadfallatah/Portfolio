@@ -116,4 +116,34 @@
     height: 40px;
   }
 }
+/* quate */
+.about .text .quate {
+  display: flex;
+  gap: 10px;
+  margin-bottom: .5rem;
+}
+@media(min-width: 991px) {
+  .about .text .quate {
+    flex-direction: column;
+  }
+}
+.about .text:hover .rect{
+  animation-play-state: running;
+}
+.about .rect {
+  width: 20px;
+  height: 20px;
+  background-color: var(--clr);
+  transform: rotate(-65.09deg);
+  animation: rotate 4s linear infinite ;
+  animation-play-state: paused;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(-65.09deg);
+  }
+  100% {
+    transform: rotate(294.91deg);
+  }
+}
 /* End Title */

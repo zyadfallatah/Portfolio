@@ -42,7 +42,7 @@ img {
   max-width: 100%;
 }
 span {
-  display: inline-block;
+  display: block;
 }
 section {
   position: relative;
@@ -313,6 +313,7 @@ header .links a:hover {
   background-color: var(--main-alt-clr);
   padding: var(--main-padding) 1rem;
   min-width: 639px;
+  min-height: 85vh;
 }
 .skills .hero{
   align-self: center;
@@ -362,3 +363,90 @@ header .links a:hover {
   text-transform: capitalize;
 }
 /* End Skills */
+
+/* Start About */
+.about {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  padding: 0;
+  overflow: hidden;
+}
+@media(max-width: 991px) {
+  .about {
+    grid-template-columns: 100%;
+  }
+}
+.about .left-side { 
+  padding: var(--main-padding) 4rem;
+}
+.about .left-side .text {
+  display: flex;
+  align-items: center;
+  color: var(--main-black-clr);
+  padding: 0 ;
+  margin-bottom: 2rem;
+}
+.about .left-side .text h3 {
+  position: relative;
+  max-width: 700px;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition-duration: var(--main-transtion);
+  transition-delay: 200ms;
+}
+@media(max-width: 991px) {
+  .about .left-side {
+    padding: var(--main-padding) 2rem;
+  }
+  .about .left-side .text {
+    flex-direction: column;
+  }
+  .about .left-side .text h3 {
+    font-size: 1.25rem;
+  }
+}
+.about .left-side .text:hover h3 {
+  color: var(--bg-white-alt-clr);
+}
+.about .left-side .text h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 0;
+  background-color: var(--main-black-clr);
+  transition-duration: 500ms;
+}
+.about .left-side .text:hover h3::before {
+  height: 100%;
+}
+.about .left-side .text h3::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #0093E1;
+  transition-duration: 600ms;
+  z-index: -1;
+}
+.about .left-side .text:hover h3::after {
+  width: 99%;
+}
+.about .left-side .more {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1.2rem 1rem;
+  color: var(--bg-white-clr);
+  background-color: var(--accent-clr);
+  margin-top: 5rem;
+}
+.about .right-side {
+  background-color: var(--main-white-clr);
+  min-height: 80vh;
+}
+/* End About */
