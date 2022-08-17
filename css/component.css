@@ -107,13 +107,20 @@
   background-color: var(--clr);
   transform: rotate(34deg);
 }
-@media(max-width: 991px) {
+@media(max-width: 767px) {
   .main-heading {
     font-size: 3rem;
   }
   .main-heading span {
     width: 40px;
     height: 40px;
+  }
+}
+
+
+@media(max-width: 991px) {
+  .main-heading {
+    margin: 0 auto 6rem;
   }
 }
 /* quate */
