@@ -314,9 +314,8 @@ header .links a:hover {
 .skills .left-side {
   flex-basis: 50%;
   background-color: var(--main-alt-clr);
-  padding: var(--main-padding) 1rem;
+  padding: var(--main-padding) 1rem 10rem;
   min-width: 639px;
-  min-height: 60vh;
 }
 .skills .hero{
   align-self: center;
