@@ -7,7 +7,7 @@
   position: relative;
   width: 156.85px;
   height: 161.58px;
-  background-color: #0E79B2;
+  background-color: #0e79b2;
   transform: rotate(45deg);
 }
 .arrow::before,
@@ -20,12 +20,12 @@
 }
 .arrow::before {
   left: 100%;
-  background-color: #D9ECF2;
+  background-color: #d9ecf2;
   animation: intro-white ease 1s forwards;
 }
 .arrow::after {
   bottom: 100%;
-  background-color: #002D40;
+  background-color: #002d40;
   animation: intro-black ease 1s forwards;
 }
 @keyframes intro-white {
@@ -53,10 +53,12 @@
   }
 }
 @keyframes up-down {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     transform: translateY(0);
   }
-  25%{
+  25% {
     transform: translateY(30px);
   }
   75% {
@@ -95,7 +97,7 @@
   align-items: center;
   position: relative;
   width: fit-content;
-  color: #002D40;
+  color: #002d40;
   font-size: 4rem;
   text-transform: capitalize;
   gap: 1.5rem;
@@ -107,7 +109,7 @@
   background-color: var(--clr);
   transform: rotate(34deg);
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .main-heading {
     font-size: 3rem;
   }
@@ -116,25 +118,29 @@
     height: 40px;
   }
 }
-
-
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .main-heading {
     margin: 0 auto 6rem;
   }
 }
+@media (max-width: 1200px) {
+  .main-heading {
+    font-size: 3rem;
+  }
+}
+
 /* quate */
 .about .text .quate {
   display: flex;
   gap: 10px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
-@media(min-width: 991px) {
+@media (min-width: 991px) {
   .about .text .quate {
     flex-direction: column;
   }
 }
-.about .text:hover .rect{
+.about .text:hover .rect {
   animation-play-state: running;
 }
 .about .rect {
@@ -142,7 +148,7 @@
   height: 20px;
   background-color: var(--clr);
   transform: rotate(-65.09deg);
-  animation: rotate 4s linear infinite ;
+  animation: rotate 4s linear infinite;
   animation-play-state: paused;
 }
 @keyframes rotate {
