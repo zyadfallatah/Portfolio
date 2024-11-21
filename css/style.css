@@ -52,6 +52,20 @@ section {
 input {
   display: block;
 }
+
+.overlay-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.overlay-page.active {
+  display: block;
+}
 /* End General rules */
 
 /* Start Header */
@@ -75,28 +89,10 @@ header .burger {
   width: 40px;
   color: var(--bg-white-clr);
   font-size: 2rem;
+
+  cursor: pointer;
 }
-@media (max-width: 991px) {
-  header .burger {
-    display: block;
-  }
-  header .burger:hover + .links {
-    display: block;
-  }
-  header .links {
-    display: none;
-    position: absolute;
-    top: 74px;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    background-color: var(--main-clr);
-    flex-direction: column;
-  }
-  header .link {
-    border-bottom: 1px solid var(--main-alt-clr);
-  }
-}
+
 header .links a {
   display: flex;
   justify-content: center;
@@ -110,6 +106,34 @@ header .links a {
 }
 header .links a:hover {
   background-color: #002d40;
+}
+
+@media (max-width: 991px) {
+  header .burger {
+    display: block;
+  }
+  header .links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    opacity: 0;
+    width: 70%;
+    min-height: calc(100vh);
+    background-color: var(--main-clr);
+    flex-direction: column;
+
+    transition-duration: 500ms;
+    z-index: 1000;
+  }
+  header .links.active {
+    opacity: 1;
+    right: 0;
+  }
+  header .link {
+    width: 100%;
+    color: var(--main-black-clr);
+    border-bottom: 1px solid var(--main-alt-clr);
+  }
 }
 /* End Header */
 
