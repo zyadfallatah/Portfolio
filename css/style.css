@@ -144,30 +144,30 @@ header .links a:hover {
   margin-top: 4rem;
   text-transform: capitalize;
   font-weight: 700;
-  font-size: 55px;
+  font-size: 40px;
 }
 .landing .content .name {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 400;
   text-transform: capitalize;
   margin: 1rem 0;
 }
-@media (min-width: 1200px) {
+@media (min-width: 991px) {
   .landing .content .welcome {
-    font-size: 72px;
+    font-size: 54px;
   }
   .landing .content .name {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 }
 .landing .content .description {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 3rem 0;
 }
 @media (max-width: 767px) {
   .landing .content .description {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
 .landing .content .call {
@@ -212,7 +212,7 @@ header .links a:hover {
 .projects .content {
   display: flex;
   justify-content: space-between;
-  flex: 1;
+  align-items: center;
   background-color: var(--bg-white-alt-clr);
   border-radius: var(--border);
 }
@@ -228,6 +228,7 @@ header .links a:hover {
 @media (max-width: 767px) {
   .projects .content {
     flex-direction: column-reverse;
+    align-items: stretch;
   }
 }
 .projects .content > * {
@@ -249,6 +250,10 @@ header .links a:hover {
   max-width: 580px;
   line-height: 1.5;
 }
+.projects .links {
+  display: flex;
+  gap: 1rem;
+}
 .projects .links a {
   text-transform: capitalize;
   font-size: 1.25rem;
@@ -259,7 +264,7 @@ header .links a:hover {
 
 @media (max-width: 991px) {
   .projects .title {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
   .projects .links a {
     text-transform: capitalize;
@@ -267,6 +272,16 @@ header .links a:hover {
     padding: 0.75rem 1rem;
     border-radius: var(--border);
     transition-duration: var(--main-transtion);
+  }
+}
+
+@media (max-width: 767px) {
+  .projects .title {
+    font-size: 1.5rem;
+  }
+  .projects .links {
+    flex-direction: column;
+    text-align: center;
   }
 }
 .projects .links a i {
@@ -285,14 +300,12 @@ header .links a:hover {
 .projects .links .source {
   color: var(--main-black-clr);
   background-color: var(--bg-white-clr);
-  margin-left: 1rem;
 }
 .projects .links .source:hover {
   background-color: var(--main-white-clr);
 }
 .projects .overlay {
   position: relative;
-  align-self: flex-start;
 }
 .projects .overlay::before {
   content: "";
