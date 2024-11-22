@@ -85,9 +85,31 @@ header .container {
 header .logo {
   max-height: 60px;
 }
+header .links .backward {
+  color: var(--main-white-clr);
+  font-size: 1.8rem;
+  align-self: flex-start;
+  width: 100%;
+  padding: 1rem 2rem;
+
+  transition-duration: var(--main-transtion);
+  border-bottom: 1px solid var(--main-white-clr);
+  cursor: pointer;
+}
+
+header .links .backward:hover {
+  color: var(--main-black-clr);
+}
+@media (min-width: 992px) {
+  header .links .backward {
+    display: none;
+  }
+}
+
 header .links {
   display: flex;
   align-items: center;
+  max-width: 400px;
 }
 header .burger {
   display: none;
@@ -104,7 +126,7 @@ header .links a {
   align-items: center;
   text-transform: capitalize;
   font-size: 1.25rem;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
   min-height: 60px;
   color: var(--bg-white-clr);
   transition-duration: var(--main-transtion);
@@ -127,6 +149,8 @@ header .links a:hover {
     background-color: var(--main-clr);
     flex-direction: column;
 
+    border: 2px solid var(--main-alt-clr);
+
     transition-duration: 500ms;
     z-index: 1000;
   }
@@ -137,7 +161,7 @@ header .links a:hover {
   header .link {
     width: 100%;
     color: var(--main-black-clr);
-    border-bottom: 1px solid var(--main-alt-clr);
+    border-bottom: 1px solid var(--main-white-clr);
   }
 }
 /* End Header */
