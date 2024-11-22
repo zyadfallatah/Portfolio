@@ -70,7 +70,12 @@ input {
 
 /* Start Header */
 header {
+  position: fixed;
+  width: 100%;
   background-color: var(--main-clr);
+  top: 0;
+  left: 0;
+  z-index: 2000;
 }
 header .container {
   display: flex;
@@ -78,7 +83,7 @@ header .container {
   align-items: center;
 }
 header .logo {
-  max-height: 75px;
+  max-height: 60px;
 }
 header .links {
   display: flex;
@@ -100,7 +105,7 @@ header .links a {
   text-transform: capitalize;
   font-size: 1.25rem;
   padding: 0 1.5rem;
-  min-height: 75px;
+  min-height: 60px;
   color: var(--bg-white-clr);
   transition-duration: var(--main-transtion);
 }
@@ -141,7 +146,7 @@ header .links a:hover {
 .landing {
   display: flex;
   align-items: center;
-  min-height: calc(100vh - 75px);
+  min-height: 100vh;
   background: linear-gradient(255.58deg, #f5f5f5 -0.8%, #d9ecf2 100.88%);
   color: var(--main-black-clr);
 }
