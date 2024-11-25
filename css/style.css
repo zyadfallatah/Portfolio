@@ -224,26 +224,48 @@ header .links a:hover {
     font-size: 1.25rem;
   }
 }
-.landing .content .call {
+.landing .content .priority-links {
+  display: flex;
+  gap: 2rem;
+}
+.landing .content .link {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 251px;
-  height: 66px;
-  color: var(--bg-white-clr);
-  background-color: var(--accent-clr);
+  padding: 1rem 1.25rem;
   border-radius: var(--border);
+  background-color: var(--bg-white-alt-clr);
   transition-duration: var(--main-transtion);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-transform: capitalize;
 }
-.landing .content .call:hover {
-  opacity: 0.7;
+.landing .content .link:hover {
+  background-color: var(--main-white-clr);
+  color: var(--main-clr);
 }
-@media (max-width: 991px) {
-  .landing .content .call {
-    margin: 0 auto;
+.landing .content .link.call {
+  color: var(--bg-white-clr);
+  background-color: var(--accent-clr);
+}
+.landing .content .link.call:hover {
+  opacity: 0.6;
+  background-color: var(--main-black-clr);
+}
+@media (max-width: 992px) {
+  .landing .content .priority-links {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .landing .content .priority-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .landing .content .link {
+    font-size: 1rem;
+    padding: 0.75rem;
   }
 }
 .landing .content i {
