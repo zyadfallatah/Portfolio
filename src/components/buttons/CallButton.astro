@@ -1,0 +1,16 @@
+---
+
+interface Props {
+  text: string,
+  width: string,
+  height: number,
+}
+
+const {text, width, height} = Astro.props;
+---
+
+<button class=`w-[150px] h-[80px] bg-linear-180 from-primary-lighter to-primary-darker rounded-md border border-[#657080]
+  shadow shadow-[#576270] text-4xl font-semibold text-light cursor-pointer hover:from-[#7E8A9B] hover:to-[#949FAD] duration-500
+  hover:border-[#696969]`>
+  {text}
+</button>
