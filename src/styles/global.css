@@ -23,4 +23,15 @@
 
 @theme {
   --font-sans: "Changa";
+  --color-primary-lighter: hsla(214, 13%, 49%, 100%);
+  --color-primary: hsla(214, 12%, 40%, 100%);
+  --color-primary-darker: hsla(214, 13%, 27%, 100%);
+
+  --color-light-lighter: hsla(0, 0%, 98%, 100%);
+  --color-light: hsla(0, 0%, 90%, 100%);
+  --color-light-darker: hsla(0, 0%, 87%, 100%);
+
+  --color-dark-lighter: hsla(0, 0%, 20%, 100%);
+  --color-dark: hsla(0, 0%, 15%, 100%);
+  --color-dark-darker: hsla(0, 0%, 10%, 100%);
 }
