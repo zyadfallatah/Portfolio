@@ -1,0 +1,50 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { cn } from '../utils/utils';
+
+
+interface Props {
+  text: string
+  variant: "primary" | "light" | "dark" | "outline"
+  href?: string
+  languageLink?: "ar" | "en"
+  className?: string
+}
+
+const {text, variant , href ,languageLink, className} = Astro.props;
+let buttonStyles = "";
+
+switch (variant) {
+  case "primary":
+    buttonStyles = `text-light bg-linear-180 from-primary-lighter to-primary-darker border-[#657080] 
+    shadow shadow-[#576270] hover:from-[#7E8A9B] hover:to-[#949FAD] hover:border-[#696969]`
+    break;
+  case "dark":
+    buttonStyles = `text-light bg-linear-180 from-dark-lighter to-dark-darker border-[#4D4D4D] 
+    shadow shadow-[#4F4F4F] hover:from-[#363636] hover:to-[#919191]`
+    break;
+  case "light":
+    buttonStyles = `text-primary-darker bg-linear-180 from-light-lighter to-[#DEDEDE] border-[#C7C7C7] 
+    shadow shadow-[#7D7D7D] hover:from-[#ABABAB] hover:to-[#C4C4C4] hover:text-dark`
+    break;
+  case "outline":
+    buttonStyles = `text-primary-darker bg-light-lighter border-[#657080] border-2
+    shadow shadow-[#576270] hover:bg-primary-lighter hover:text-light`
+    break;
+  default:
+    break;
+}
+
+const link = href && getRelativeLocaleUrl(languageLink ?? "ar", href)
+
+---
+{href ? 
+<a href={link} class={cn("flex justify-center font-semibold cursor-pointer rounded-md", className, buttonStyles)}>
+  <button class={"cursor-pointer"}>
+    {text}
+  </button>
+</a> : 
+  <button class={cn(`font-semibold cursor-pointer rounded-md`, className, buttonStyles)}>
+    {text}
+  </button>
+}

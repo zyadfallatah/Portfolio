@@ -1,11 +1,10 @@
 ---
-import CallButton from '../components/buttons/CallButton.astro';
+import Welcome from '../components/landing/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<div class="bg-linear-180 from-dark to-dark-darker min-h-svh flex flex-col items-center">
-		<img src="/assets/logo.svg" alt="logo" class="max-w-[230px]">
-		<CallButton text="شاهد" width={"900px"} height={110} />
+	<div class="bg-gradient-to-b from-dark to-dark-darker min-h-svh flex flex-col justify-center items-center md:justify-start px-8">
+		<Welcome />
 	</div>
 </Layout>
