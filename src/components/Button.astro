@@ -8,10 +8,11 @@ interface Props {
   variant: "primary" | "light" | "dark" | "outline"
   href?: string
   languageLink?: "ar" | "en"
+  icon?: string
   className?: string
 }
 
-const {text, variant , href ,languageLink, className} = Astro.props;
+const {text, variant , href , icon ,languageLink, className} = Astro.props;
 let buttonStyles = "";
 
 switch (variant) {
@@ -40,11 +41,13 @@ const link = href && getRelativeLocaleUrl(languageLink ?? "ar", href)
 ---
 {href ? 
 <a href={link} class={cn("flex justify-center font-semibold cursor-pointer rounded-md", className, buttonStyles)}>
+  {icon && <img src={icon} class="max-w-10"/> }
   <button class={"cursor-pointer"}>
     {text}
   </button>
 </a> : 
-  <button class={cn(`font-semibold cursor-pointer rounded-md`, className, buttonStyles)}>
+  <button class={cn(`flex flex-row-reverse justify-center items-center gap-2 font-semibold cursor-pointer rounded-md`, className, buttonStyles)}>
+      {icon && <img src={icon} class="size-4.5"/> }
     {text}
   </button>
 }
