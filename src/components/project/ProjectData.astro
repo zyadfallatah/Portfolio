@@ -13,9 +13,9 @@ const {title, shortDescription, technologies} = Astro.props;
 <div class="space-y-3 max-w-[236px]">
   <h3 class="text-3xl lg:text-[2.5rem] light-text-gradient font-semibold text-center p-2">{title}</h3>
   <p class=" text-light text-[1rem] lg:text-[1.25rem] text-center">{shortDescription}</p>
-    <div class="flex lg:flex-row gap-2">
+    <div class="flex flex-wrap justify-start lg:flex-row gap-2">
       {technologies.map((tech) => (
-        <Button text={tech.name} variant="light" icon="/assets/flutter.svg" className="max-sm:text-sm p-2 px-5 min-w-20 max-w-28" />
+        <Button text={tech.name} variant="light" icon={tech.icon} className="max-sm:text-sm p-2 px-5 min-w-20 w-28" />
       ))}
     </div>
 </div>
