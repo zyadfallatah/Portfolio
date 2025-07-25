@@ -10,12 +10,12 @@
 
 ## Roadmap
 
-- [ ] Learn Astro basics
-- [ ] Install assets & external libraries
+- [x] Learn Astro basics
+- [x] Install assets & external libraries
   - Images
   - Fonts
   - Colors
-- [ ] Prepare components
+- [x] Prepare components
 - [ ] Start Building the application (Dark mode)
 - Start with the landing page
 - Project Details
