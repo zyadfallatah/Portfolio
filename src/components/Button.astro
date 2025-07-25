@@ -36,7 +36,7 @@ switch (variant) {
     break;
 }
 
-const link = href && getRelativeLocaleUrl(languageLink ?? "ar", href)
+const link = href && href.startsWith("#") ? href : getRelativeLocaleUrl(languageLink ?? "ar", href)
 
 ---
 {href ? 
