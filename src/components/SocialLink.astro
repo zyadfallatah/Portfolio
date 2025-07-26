@@ -1,14 +1,17 @@
 ---
+import { cn } from '../utils/utils';
+
 interface Props {
   imagePath: string
   alt: string
   href: string
+  className?: string,
 }
 
-const {imagePath, alt, href} = Astro.props;
+const {imagePath, alt, href, className} = Astro.props;
 
 ---
 
-<a href={href} class="flex justify-center items-center rounded-md rotate-[120deg] bg-linear-30 from-[#F2F2F2] to-[#9DA7B3] w-14 h-16 sm:w-16 sm:h-20 p-2.5 sm:p-3 hover:from-light-lighter hover:to-light">
+<a href={href} class={cn("flex justify-center items-center rounded-md rotate-[120deg] bg-linear-30 from-[#F2F2F2] to-[#9DA7B3] w-14 h-16 sm:w-16 sm:h-20 p-2.5 sm:p-3 hover:from-light-lighter hover:to-light", className)}>
   <img src={imagePath} alt={alt} class="w-full rotate-[-120deg]">
 </a>

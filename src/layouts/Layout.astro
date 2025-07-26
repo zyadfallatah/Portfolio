@@ -1,4 +1,5 @@
 ---
+import SocialLink from "../components/SocialLink.astro"
 import "../styles/global.css"
 ---
 
@@ -13,9 +14,21 @@ import "../styles/global.css"
 	</head>
 	<body>
 		<slot />
-		<footer class="bg-linear-90 from-primary-lighter to-[#303640] flex justify-between items-center w-full min-h-[50px] md:min-h-[100px] px-8 max-w-[1440px] mx-auto">
-			<span class="light-text-gradient font-medium text-2xl md:text-[2rem]">contact@zyadfallatah.com</span>
-			
+		<footer class="bg-linear-90 from-primary-lighter to-[#303640]  w-full px-8 mx-auto">
+			<div class="min-h-[50px] md:min-h-[100px] max-w-[1440px] mx-auto flex max-sm:flex-col justify-center gap-5 md:gap-16 items-center px-10 py-5">
+				<span class="light-text-gradient font-medium text-2xl md:text-[2rem]">contact@zyadfallatah.com</span>
+				<ul class="flex gap-10">
+					<li>
+						<SocialLink href='https://www.linkedin.com/in/ziyad-fallatah/' alt='x logo' imagePath='/assets/linkedin.svg' className="w-10! h-12! md:w-12! md:h-14!"/>
+					</li>
+					<li>
+						<SocialLink href='https://x.com/zyad_fallatah' alt='x logo' imagePath='/assets/x.svg' className="w-10! h-12! md:w-12! md:h-14!"/>
+					</li>
+					<li>
+						<SocialLink href='https://github.com/zyadfallatah' alt='x logo' imagePath='/assets/github.svg' className="w-10! h-12! md:w-12! md:h-14!"/>
+					</li>
+				</ul>
+			</div>
 		</footer>
 	</body>
 </html>
