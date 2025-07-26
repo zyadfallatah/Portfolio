@@ -1,21 +1,25 @@
 ---
 import { cn } from "../utils/utils";
-import ProjectData from "./project/projectData.astro";
 import ProjectBannar from "./project/ProjectBanner.astro"
+import ProjectData from "./project/ProjectData.astro";
 
 interface Props {
   project: Project
+  linkName: string
   isMirroredToRight?: boolean
 }
 
-const {isMirroredToRight, project} = Astro.props;
+const {isMirroredToRight,linkName , project} = Astro.props;
 const {title, shortDescription, metadata, bannar, technologies} = project;
 ---
 
 <div class={cn("flex flex-col items-center lg:items-start justify-center gap-6 mb-10 lg:mb-20", isMirroredToRight ? "md:flex-row-reverse lg:ml-[13rem]" : "md:flex-row lg:mr-[10rem]")}>
   <ProjectData title={title} shortDescription={shortDescription} technologies={technologies}/>
   <div class="hidden lg:block w-16 z-10">
-    <img src="/assets/hexagon.svg" alt="hexagon icon" >
+    <a href={`/projects/${linkName}`} class="relative">
+      <img src="/assets/hexagon.svg" alt="hexagon icon" >
+      <img src="/assets/external-link-alt.svg" alt="hwllo" class="absolute left-[41.5%] top-[33%]">
+    </a>
   </div>
   <ProjectBannar metadata={metadata} bannar={bannar}/>
 </div>
