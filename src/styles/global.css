@@ -42,10 +42,10 @@ html {
 
 @layer base {
   .landing {
-    @apply bg-gradient-to-b from-dark to-dark-darker min-h-svh flex flex-col justify-center items-center px-8;
+    @apply bg-gradient-to-b from-dark to-dark-darker flex flex-col justify-center items-center px-8 py-8;
   }
   .landing-reverse {
-    @apply bg-gradient-to-t from-dark to-dark-darker min-h-svh flex flex-col justify-center items-center px-8;
+    @apply bg-gradient-to-t from-dark to-dark-darker flex flex-col justify-center items-center px-8;
   }
   .light-text-gradient {
     @apply bg-clip-text bg-linear-[40deg] from-[#E8EAED] to-primary text-transparent;
