@@ -25,7 +25,7 @@
 
 ## more specifc requirment (chronological)
 
-- [ ] Implement limiter
+- [ ] Implement limiter (Delay it)
 - [ ] Implement markdown for project experience detail
 - [ ] Project expand for mobile
 - [ ] View Project (for web its url, for mobile i need media player and images)
