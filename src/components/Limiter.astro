@@ -1,0 +1,9 @@
+---
+interface Props {
+  data: any[]
+  limit: number
+  callback: (data: any) => Astro.ClientDirectives
+}
+
+const {data, limit, callback} = Astro.props
+---

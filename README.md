@@ -21,6 +21,15 @@
 - Project Details
 - All Projects (Don't start it until i have 3 projects aligned)
 - Found media solution to show video prototype of applications that are not deployed or published
-- [ ] Implement Light mode
+- [ ] Implement Light mode (This going to be delayed)
+
+## more specifc requirment (chronological)
+
+- [ ] Implement limiter
+- [ ] Implement markdown for project experience detail
+- [ ] Project expand for mobile
+- [ ] View Project (for web its url, for mobile i need media player and images)
+- [ ] (only for mobile application) Implement media player
+- [ ] choose: CMS to manage content or just write it to the app
 
 ## Tech Stack
