@@ -1,18 +1,19 @@
 ---
 import Highlight from "../Highlight.astro";
 
+type Props = {project:Project};
+const {project} = Astro.props
 
+const { longDescription, content } = project;
 ---
 
 <div class="w-full">
   <Highlight title="وصف دقيق للمشروع" contentType="Default" variant="special">
     <p class="text-light font-light text-[.65rem] md:text-[1rem] lg:text-xl">
-      تطبيق يساعد الحاج أو المعتمر في أداء مناسكه بكل يسر و سهولة ، 
-  يركز في تسهيل تجربة المستخدم ، المتابعة بخريطة تفاعلية بسيطة و 
-  توفير جميع المستلزمات من أذكار و قرآن في مكان واحد.
+      {longDescription  }
     </p>
   </Highlight>
-  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" >
-    I need markdown
+  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" isScrollable={true} >
+    {longDescription?.repeat(3)}
   </Highlight>
 </div>

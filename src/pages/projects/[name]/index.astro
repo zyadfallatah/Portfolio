@@ -23,7 +23,7 @@ const currentProject = projects.filter((project) => project.linkName === name).a
       <h1 class="light-text-gradient text-4xl md:text-6xl font-bold pb-5 pt-2 w-fit mb-5">{currentProject?.title}</h1>
       <div class="flex flex-col lg:flex-row gap-5 lg:gap-8 w-full">
         <ProjectMeta project={currentProject!} />
-        <ProjectHighlight />
+        <ProjectHighlight project={currentProject!} />
       </div>
     </div>
   </div>

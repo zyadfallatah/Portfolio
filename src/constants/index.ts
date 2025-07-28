@@ -3,6 +3,10 @@ export const projects: Project[] = [
     linkName: "mulabbi",
     title: "ملبي",
     shortDescription: `تطبيق يرشد الحاج أو المعتمر\nلأداء مناسكه خطوة بخطوة`,
+    longDescription: `
+تطبيق يساعد الحاج أو المعتمر في أداء مناسكه بكل يسر و سهولة ، 
+  يركز في تسهيل تجربة المستخدم ، المتابعة بخريطة تفاعلية بسيطة و 
+  توفير جميع المستلزمات من أذكار و قرآن في مكان واحد.`,
     technologies: [
       { name: "flutter", icon: "/assets/flutter.svg" },
       { name: "supabase", icon: "/assets/Supabase.svg" },
