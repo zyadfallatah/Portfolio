@@ -10,13 +10,13 @@ import Footer from "./Footer.astro"
 
     <div class="lg:flex gap-20 justify-center">
       <main>
-        <Highlight title="نبذة" contentType="Default" variant="special">
+        <Highlight title="نبذة" contentType="Default" variant="special" limitText={true}>
           اسمي <span class="light-text-gradient">زياد</span> ، طالب علوم حاسب من جامعة أم القرى
         </Highlight>
-        <Highlight title="وصف" contentType="Default">
+        <Highlight title="وصف" contentType="Default" limitText={true}>
           أقوم بتصميم و تطوير حلول برمجية تعمل على تحسين حياة الأفراد و المجتمعات، مع التركيز على الجودة العالية و الأداء المتميز، و دائماً ما أتبع أحدث المعايير التقنية و أفضل الممارسات
         </Highlight>
-        <Highlight title="الخبرة" contentType="Custom">
+        <Highlight title="الخبرة" contentType="Custom" limitText={true}>
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-1 sm:gap-2">
               <img src="/assets/d-shape.svg" alt="D Shape" class="max-sm:max-w-4">

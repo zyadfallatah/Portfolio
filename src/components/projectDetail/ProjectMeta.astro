@@ -5,7 +5,7 @@ import Highlight from '../Highlight.astro';
 type Props = {project: Project}
 const {project} = Astro.props;
 ---
-<aside class="min-w-[300px]">
+<aside class="lg:min-w-[250px]">
   <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
   <div class="flex gap-2 mt-3">
     {project.tags?.map((tag) => (
@@ -19,7 +19,7 @@ const {project} = Astro.props;
   <h2 class="light-text-gradient text-[1.5rem] lg:text-[2rem] mt-5 font-medium w-fit">التقنيات</h2>
   <div class="flex flex-wrap gap-4 mt-2">
   {project.technologies.map((tech) => (
-    <Button text={tech.name} variant='light' icon={tech.icon} className='flex-1 p-2' />
+    <Button text={tech.name} variant='light' icon={tech.icon} className='flex-1 text-[.75rem] p-2' />
   ))}
   </div>
   </div>
