@@ -40,11 +40,11 @@ const link = href && href.startsWith("#") ? href : getRelativeLocaleUrl(language
 
 ---
 {href ? 
-<a href={link} class={cn("flex justify-center font-semibold cursor-pointer rounded-md", className, buttonStyles)}>
-  {icon && <img src={icon} class="max-w-10"/> }
+<a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md", className, buttonStyles)}>
   <button class={"cursor-pointer"}>
     {text}
   </button>
+  {icon && <img src={icon} class="max-w-10"/> }
 </a> : 
   <button class={cn(`flex flex-row-reverse justify-center items-center gap-2 font-semibold cursor-pointer rounded-md`, className, buttonStyles)}>
       {icon && <img src={icon} class="size-4.5"/> }

@@ -1,6 +1,8 @@
 ---
+import { hardSkills, softSkills } from "../../constants"
 import Highlight from "../Highlight.astro"
 import SkillGroup from "../skill-group.astro"
+import Footer from "./Footer.astro"
 ---
 <div class="landing justify-start md:items-start max-sm:pt-10 pb-10" id="about">
   <div class="w-full lg:max-w-[1440px] mx-auto">
@@ -30,12 +32,13 @@ import SkillGroup from "../skill-group.astro"
       </main>
       <aside class="flex flex-col items-center">
         <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1">المهارات</h3>
-        <SkillGroup text="التقنية" skillSets={[{name: "react", icon: "/assets/react.svg"}, {name: "react", icon: "/assets/react.svg"}, {name: "react", icon: "/assets/react.svg"}, {name: "react", icon: "/assets/react.svg"}]}
+        <SkillGroup text="التقنية" skillSets={hardSkills}
         />
-        <SkillGroup text="الناعمة" skillSets={[{name: "react"}, {name: "react", icon: "/assets/react.svg"}, {name: "react", icon: "/assets/react.svg"}, {name: "react", icon: "/assets/react.svg"}]}
+        <SkillGroup text="الناعمة" skillSets={softSkills}
         />
       </aside>
 
     </div>
   </div>
 </div>
+<Footer />
