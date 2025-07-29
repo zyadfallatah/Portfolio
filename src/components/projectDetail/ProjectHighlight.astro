@@ -1,5 +1,7 @@
 ---
 import Highlight from "../Highlight.astro";
+import Markdown from "../markdown.md";
+import Prose from "../Prose.astro";
 
 type Props = {project:Project};
 const {project} = Astro.props
@@ -14,6 +16,9 @@ const { longDescription, content } = project;
     </p>
   </Highlight>
   <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" isScrollable={true} >
-    {longDescription?.repeat(3)}
+    <Prose>
+      <Markdown />
+
+    </Prose>
   </Highlight>
 </div>
