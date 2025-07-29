@@ -1,9 +1,9 @@
 ---
 import Button from "../Button.astro";
-interface Props extends Pick<Project, "metadata" | "bannar" > {
+interface Props extends Pick<Project, "metadata" | "bannar" | "linkName" > {
 }
 
-const {bannar, metadata} = Astro.props;
+const {bannar, metadata, linkName} = Astro.props;
 ---
 
 <div class="flex flex-col-reverse lg:flex-row justify-between gap-2 lg:w-[420px] bg-linear-90 from-light-lighter to-primary-lighter rounded-md p-2">
@@ -19,5 +19,13 @@ const {bannar, metadata} = Astro.props;
       <Button text="الكود" variant="light" className="flex-1 p-1.5"/>
     </div>
   </div>
-  <img src={bannar} alt="mulabbi banner" class="w-full lg:max-w-[260px]">
+  <div class="relative">
+    <div class="absolute -top-3 -right-2 lg:hidden">
+      <a href={`/projects/${linkName}`} class="relative">
+        <img src="/assets/hexagon.svg" alt="hexagon icon" class="max-w-8" >
+        <img src="/assets/external-link-alt.svg" alt="hwllo" class="absolute left-[30%] top-[33%] max-w-4">
+      </a>
+    </div>
+    <img src={bannar} alt="mulabbi banner" class="w-full lg:max-w-[260px]">
+  </div>
 </div>
