@@ -8,4 +8,5 @@ interface Project {
   tags?: string[];
   linkName?: string;
   content?: string;
+  url?: string;
 }

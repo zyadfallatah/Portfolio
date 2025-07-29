@@ -27,7 +27,7 @@
 
 - [ ] Implement limiter (Delay it)
 - [x] Implement markdown for project experience detail
-- [ ] Project expand for mobile
+- [x] Project expand for mobile
 - [ ] View Project (for web its url, for mobile i need media player and images)
 - [ ] (only for mobile application) Implement media player
 - [ ] choose: CMS to manage content or just write it to the app

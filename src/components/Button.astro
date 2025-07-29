@@ -36,8 +36,8 @@ switch (variant) {
     break;
 }
 
-const link = href && href.startsWith("#") ? href : getRelativeLocaleUrl(languageLink ?? "ar", href)
-
+const link = href &&  href
+// getRelativeLocaleUrl(languageLink ?? "ar", href)
 ---
 {href ? 
 <a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md", className, buttonStyles)}>

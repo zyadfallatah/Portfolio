@@ -27,6 +27,7 @@ export const projects: Project[] = [
     ],
     metadata: ["المنصة: تطبيق ويب "],
     bannar: "/images/devflow-banner.svg",
+    url: "https://devflow-six-tawny.vercel.app/",
   },
 ];
 
