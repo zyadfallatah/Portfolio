@@ -10,7 +10,7 @@ const { videosUrls } = Astro.props
 ---
 <div>
   <h2 class="light-text-gradient text-4xl p-1 w-fit">مقاطع الفيديو</h2>
-  <video controls class="lg:w-[500px] lg:h-[250px] mt-5" src={`/${videosUrls.at(0)?.url}`} id="video">
+  <video controls class="w-full h-[250px] lg:w-[500px] lg:h-[250px] mt-5" src={`/${videosUrls.at(0)?.url}`} id="video">
   </video>
 
   <div class="grid lg:grid-cols-2 gap-10 gap-y-5 mt-4" id="buttons">
