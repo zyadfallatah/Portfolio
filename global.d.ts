@@ -9,4 +9,5 @@ interface Project {
   linkName?: string;
   content?: string;
   url?: string;
+  videosUrls?: { name: string; url: string }[];
 }

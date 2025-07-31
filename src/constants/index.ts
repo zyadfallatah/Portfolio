@@ -14,6 +14,12 @@ export const projects: Project[] = [
     metadata: ["المنصة: تطبيق جوال "],
     tags: ["عمل جماعي", "إسلامي", "إرشادي"],
     bannar: "/images/mulabbi-banner.svg",
+    url: "/media/mulabbi",
+    videosUrls: [
+      { name: "الصفحة الرئيسية", url: "video1.mov" },
+      { name: "الخريطة", url: "video2.mov" },
+      { name: "صفحة زاد", url: "video2.mov" },
+    ],
   },
   {
     linkName: "devflow",
