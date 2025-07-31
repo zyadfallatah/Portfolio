@@ -5,7 +5,7 @@ import { cn } from '../utils/utils';
 
 interface Props {
   text: string
-  variant: "primary" | "light" | "dark" | "outline"
+  variant: "primary" | "light" | "dark" | "outline" | "disabled"
   href?: string
   languageLink?: "ar" | "en"
   icon?: string
@@ -31,6 +31,9 @@ switch (variant) {
   case "outline":
     buttonStyles = `text-primary-darker bg-light-lighter border-[#657080] border-2
     shadow shadow-[#576270] hover:bg-primary-lighter hover:text-light`
+    break;
+  case "disabled":
+    buttonStyles = `bg-primary-darker text-light-darker shadow shadow-primary-lighter`
     break;
   default:
     break;
