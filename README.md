@@ -31,6 +31,7 @@
 - [ ] Fill content in website which include:
 - Image & Video upload
 - Fill the rest of the content (currently by hand until the CMS is ready)
+- [ ] Fill the metadata & SEO
 
 ## Future
 
