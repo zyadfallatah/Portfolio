@@ -9,13 +9,13 @@ const {project} = Astro.props
 const { longDescription, content } = project;
 ---
 
-<div class="w-full">
+<div class="w-full max-h-[450px] overflow-y-scroll">
   <Highlight title="وصف دقيق للمشروع" contentType="Default" variant="special">
     <p class="text-light font-light text-[.65rem] md:text-[1rem] lg:text-xl">
       {longDescription  }
     </p>
   </Highlight>
-  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" isScrollable={true} >
+  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" className="mt-5">
     <Prose>
       <Markdown />
     </Prose>
