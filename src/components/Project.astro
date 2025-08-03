@@ -11,14 +11,15 @@ interface Props {
 
 const {isMirroredToRight,linkName , project} = Astro.props;
 const {title, shortDescription, metadata, bannar, technologies, url} = project;
+// left-[41.5%] top-[33%]
 ---
 
 <div class={cn("flex flex-col items-center lg:items-start justify-center gap-6 mb-10 lg:mb-20", isMirroredToRight ? "md:flex-row-reverse lg:ml-[13rem]" : "md:flex-row lg:mr-[10rem]")}>
   <ProjectData title={title} shortDescription={shortDescription} technologies={technologies}/>
   <div class="hidden lg:block w-16 z-10">
-    <a href={`/projects/${linkName}`} class="relative">
+    <a href={`/projects/${linkName}`} class="relative block">
       <img src="/assets/hexagon.svg" alt="hexagon icon" >
-      <img src="/assets/external-link-alt.svg" alt="hwllo" class="absolute left-[41.5%] top-[33%]">
+      <img src="/assets/external-link-alt.svg" alt="" class="absolute left-[41.5%] top-[33%]">
     </a>
   </div>
 <ProjectBannar metadata={metadata} bannar={bannar} linkName={linkName} url={url}/ >
