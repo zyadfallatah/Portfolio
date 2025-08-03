@@ -13,7 +13,7 @@
       return <img src={image.url} alt={image.name} class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] duration-500" />
     })}
   </div>
-  <div class="flex justify-center gap-8 w-full mt-10">
+  <div class="flex justify-center gap-8 w-full lg:mt-10">
     <p class="flex items-center text-dark bg-linear-[50deg] from-light to-primary-lighter text-2xl px-4 rounded-md"> <span id="current-image" class="px-1">1</span>  / {imagesUrl?.length ?? 0}</p>
     <img data-arrow="next" data-arrow src="/assets/back-arrow.svg" alt="arrow" class="bg-linear-90 from-light to-[#9DA7B3] p-2 rounded-full cursor-pointer">
   </div>

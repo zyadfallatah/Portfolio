@@ -60,12 +60,17 @@ export const projects: Project[] = [
 ];
 
 export const hardSkills: { name: string; icon: string }[] = [
-  { name: "react", icon: "/assets/react.svg" },
-  { name: "react", icon: "/assets/react.svg" },
-  { name: "react", icon: "/assets/react.svg" },
+  { name: "React", icon: "/assets/react.svg" },
+  { name: "Tailwind", icon: "/assets/tailwindcss.svg" },
+  { name: "Postgres", icon: "/assets/postgres.svg" },
+  { name: "Typescript", icon: "/assets/ts-logo.svg" },
+  { name: "Flutter", icon: "/assets/flutter.svg" },
 ];
 
 export const softSkills: { name: string; icon?: string }[] = [
-  { name: "react" },
-  { name: "react", icon: "/assets/react.svg" },
+  { name: "إدارة الوقت" },
+  { name: "المرونة" },
+  { name: "حل المشاكل" },
+  { name: "الاهتمام بالتفاصيل" },
+  { name: "العمل مع فريق" },
 ];
