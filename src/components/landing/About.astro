@@ -1,5 +1,5 @@
 ---
-import { hardSkills, softSkills } from "../../constants"
+import { experinces, hardSkills, softSkills } from "../../constants"
 import Highlight from "../Highlight.astro"
 import SkillGroup from "../skill-group.astro"
 import Footer from "./Footer.astro"
@@ -17,21 +17,24 @@ import Footer from "./Footer.astro"
           أقوم بتصميم و تطوير حلول برمجية تعمل على تحسين حياة الأفراد و المجتمعات، مع التركيز على الجودة العالية و الأداء المتميز، و دائماً ما أتبع أحدث المعايير التقنية و أفضل الممارسات
         </Highlight>
         <Highlight title="الخبرة" contentType="Custom" limitText={true} isScrollable={true}>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-1 sm:gap-2">
-              <img src="/assets/d-shape.svg" alt="D Shape" class="max-sm:max-w-4">
-              <h3 class="light-text-gradient text-[.9rem] sm:text-xl">جمعية عون التقنية</h3>
+          {experinces.map((experince) => (
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-1 sm:gap-2">
+                <img src="/assets/d-shape.svg" alt="D Shape" class="max-sm:max-w-4">
+                <h3 class="light-text-gradient text-[.9rem] sm:text-xl">{experince.company}</h3>
+              </div>
+              <p class="text-[.9rem] sm:text-xl text-light">{experince.durationInMonths} شهور - {experince.type === "intern" ? "تدريب" : "غير محدد"}</p>
             </div>
-            <p class="text-[.9rem] sm:text-xl text-light">4 شهور - تدريب</p>
-          </div>
-          <span class="flex items-center mr-1.5 sm:mr-3 gap-2">
-            <img src="/assets/attach-to-d.svg" alt="design">
-            <p class="text-light text-[1rem] tracking-normal pt-1.5">وصف للخبرة</p>
-          </span>
+            <span class="flex items-center mr-1.5 sm:mr-3 gap-2">
+              <img src="/assets/attach-to-d.svg" alt="design">
+              <p class="text-light text-[1rem] tracking-normal pt-1.5">{experince.description}</p>
+            </span>
+
+          ))}
         </Highlight>
       </main>
       <aside class="flex flex-col items-center">
-        <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1 max-sm:mt-4">المهارات</h3>
+        <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1 max-lg:mt-4">المهارات</h3>
         <SkillGroup text="التقنية" skillSets={hardSkills}
         />
         <SkillGroup text="الناعمة" skillSets={softSkills}

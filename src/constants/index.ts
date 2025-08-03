@@ -74,3 +74,20 @@ export const softSkills: { name: string; icon?: string }[] = [
   { name: "الاهتمام بالتفاصيل" },
   { name: "العمل مع فريق" },
 ];
+
+export const experinces: {
+  company: string;
+  durationInMonths: number;
+  type: "intern";
+  description: string;
+}[] = [
+  {
+    company: "جمعية عون التقنية",
+    durationInMonths: 4,
+    type: "intern",
+    description: `
+      تطوير تطبيقات الجوال باستخدام flutter و العمل على التصاميم و تحويلها لتطبيقات فعالة
+      ، التعامل مع قواعد البيانات و ربطها مع الواجهات.
+      `,
+  },
+];
