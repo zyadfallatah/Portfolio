@@ -15,6 +15,28 @@ export const projects: Project[] = [
     tags: ["عمل جماعي", "إسلامي", "إرشادي"],
     bannar: "/images/mulabbi-banner.svg",
     url: "/media/mulabbi",
+    imagesUrl: [
+      {
+        name: "الدخول",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-1.png?updatedAt=1754202689501",
+      },
+      {
+        name: "التتبع",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-2.png?updatedAt=1754202562350",
+      },
+      {
+        name: "الرئيسية",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-3.png?updatedAt=1754202625061",
+      },
+      {
+        name: "زاد",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-4.png?updatedAt=1754202689714",
+      },
+      {
+        name: "القبلة",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-5.png?updatedAt=1754202689637",
+      },
+    ],
     videosUrls: [
       { name: "الصفحة الرئيسية", url: "video1.mov" },
       { name: "الخريطة", url: "video2.mov" },

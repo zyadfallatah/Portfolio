@@ -1,16 +1,20 @@
 ---
+  interface Props extends Pick<Project, "imagesUrl"> {}
 
+  const {imagesUrl} = Astro.props
 ---
 
 <div class="flex-1">
   <h2 class="light-text-gradient text-4xl p-1 w-fit mb-4">صور</h2>
   <div class="relative min-h-[428px] max-w-[250px] lg:max-w-[400px] overflow-x-hidden mx-auto lg:mx-0" id="images">
-    <img src="/images/mulabbi-img-1.png" alt="onboarding screen" class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] z-10 duration-500" data-active>
-    <img src="/images/mulabbi-img-1.png" alt="onboarding screen" class="absolute right-[50%] top-1/2 -translate-y-1/2 max-w-[135px] border-4 border-red-400 duration-500">
-    <img src="/images/mulabbi-img-1.png" alt="onboarding screen" class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] border-4 border-blue-400 duration-500">
+    {imagesUrl?.map((image, index) => {
+      if (index === 0) return <img src={image.url} alt={image.name} class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] z-10 duration-500" data-active />
+      if (index === 1) return <img src={image.url} alt={image.name} class="absolute right-[50%] top-1/2 -translate-y-1/2 max-w-[135px] duration-500" />
+      return <img src={image.url} alt={image.name} class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] duration-500" />
+    })}
   </div>
   <div class="flex justify-center gap-8 w-full mt-10">
-    <p class="flex items-center text-dark bg-linear-[50deg] from-light to-primary-lighter text-2xl px-4 rounded-md"> <span id="current-image" class="px-1">1</span>  / 3</p>
+    <p class="flex items-center text-dark bg-linear-[50deg] from-light to-primary-lighter text-2xl px-4 rounded-md"> <span id="current-image" class="px-1">1</span>  / {imagesUrl?.length ?? 0}</p>
     <img data-arrow="next" data-arrow src="/assets/back-arrow.svg" alt="arrow" class="bg-linear-90 from-light to-[#9DA7B3] p-2 rounded-full cursor-pointer">
   </div>
 </div>
