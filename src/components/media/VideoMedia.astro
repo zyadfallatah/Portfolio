@@ -32,7 +32,7 @@ const { videosUrls } = Astro.props
 
 <script>
   const projectName = window.location.pathname.slice(7);
-  const response = await fetch(`/src/data/projects/project-${projectName}.json`)
+  const response = await fetch(`/api/${projectName}.json`)
   const currentProject = await response.json()
   const video = document.getElementById("video") as HTMLVideoElement
   const btns = document.getElementById("buttons") as HTMLButtonElement
