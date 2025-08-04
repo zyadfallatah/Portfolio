@@ -1,0 +1,36 @@
+---
+import SocialLink from "../components/SocialLink.astro"
+import "../styles/global.css"
+
+interface Props {
+	title?: string
+}
+const {title} = Astro.props
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- <meta name="generator" content={Astro.generator} /> -->
+		<title> {title ? `مشروع | ${title}` : "زياد | الموقع الشخصي"}</title>
+
+		<!-- Open graph (facebook)-->
+		<meta property="og:title" content="زياد | الموقع الشخصي - zyad | Portfolio">
+		<meta property="og:description" content="موقع استعرض فيه المشاريع و الخبرات | Website showing my projects & experiences">
+		<meta property="og:image" content="/images/opengraph-image.png">
+		<meta property="og:url" content="https://portfolio.zyadfallatah.com/">
+
+		<!-- Open graph (twitter)-->
+		<meta property="twitter:title" content="زياد | الموقع الشخصي - zyad | Portfolio">
+		<meta property="twitter:description" content="موقع استعرض فيه المشاريع و الخبرات | Website showing my projects & experiences">
+		<meta property="twitter:image" content="/images/opengraph-image.png">
+		<meta property="twitter:url" content="https://portfolio.zyadfallatah.com/">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+

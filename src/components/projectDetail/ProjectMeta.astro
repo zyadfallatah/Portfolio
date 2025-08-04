@@ -1,0 +1,27 @@
+---
+import Button from '../Button.astro';
+
+type Props = {project: Project}
+const {project} = Astro.props;
+---
+<aside class="lg:min-w-[250px]">
+  <a href={project.url}>
+    <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
+  </a>
+  <div class="flex gap-2 mt-3">
+    {project.tags?.map((tag) => (
+      <Button text={tag} variant="primary" className='flex-1 font-medium text-sm py-3' />
+    ))}
+  </div>
+  <div class="mt-10">
+  {project.metadata.map((data) => (
+    <div class="bg-gradient-to-r from-[#9DA7B3] to-primary-lighter rounded-md font-medium text-[1.25rem] p-2 px-4 text-white">{data}</div>
+  ))}
+  <h2 class="light-text-gradient text-[1.5rem] lg:text-[2rem] mt-5 font-medium w-fit">التقنيات</h2>
+  <div class="grid grid-cols-2 gap-4 mt-2">
+  {project.technologies.map((tech) => (
+    <Button text={tech.name} variant='light' icon={tech.icon} className='flex-1 text-[.75rem] p-2' />
+  ))}
+  </div>
+  </div>
+</aside>

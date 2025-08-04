@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "Changa";
+  src: url("/fonts/Changa-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Changa";
+  src: url("/fonts/Changa-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Changa";
+  src: url("/fonts/Changa-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Changa";
+  src: url("/fonts/Changa-Bold.ttf");
+  font-weight: 700;
+}
+
+@theme {
+  --font-sans: "Changa";
+  --color-primary-lighter: hsla(214, 13%, 49%, 100%);
+  --color-primary: hsla(214, 12%, 40%, 100%);
+  --color-primary-darker: hsla(214, 13%, 27%, 100%);
+
+  --color-light-lighter: hsla(0, 0%, 98%, 100%);
+  --color-light: hsla(0, 0%, 90%, 100%);
+  --color-light-darker: hsla(0, 0%, 87%, 100%);
+
+  --color-dark-lighter: hsla(0, 0%, 20%, 100%);
+  --color-dark: hsla(0, 0%, 15%, 100%);
+  --color-dark-darker: hsla(0, 0%, 10%, 100%);
+}
+
+@layer base {
+  .landing {
+    @apply bg-gradient-to-b from-dark to-dark-darker flex flex-col justify-center items-center px-8 py-8;
+  }
+  .landing-reverse {
+    @apply bg-gradient-to-t from-dark to-dark-darker flex flex-col justify-center items-center px-8;
+  }
+  .light-text-gradient {
+    @apply bg-clip-text bg-linear-[40deg] from-[#E8EAED] to-primary text-transparent;
+  }
+}

@@ -1,0 +1,25 @@
+---
+import { render } from "astro:content";
+import Highlight from "../Highlight.astro";
+import Prose from "../Prose.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {project:Project, markdown: CollectionEntry<"projectExperince">};
+const {project, markdown} = Astro.props
+
+const { longDescription } = project;
+const { Content  } = await render(markdown)
+---
+
+<div class="w-full max-h-[450px] overflow-y-scroll">
+  <Highlight title="وصف دقيق للمشروع" contentType="Default" variant="special">
+    <p class="text-light font-light text-[1rem] md:text-[1rem] lg:text-xl">
+      {longDescription}
+    </p>
+  </Highlight>
+  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" className="mt-5">
+    <Prose>
+      <Content />
+    </Prose>
+  </Highlight>
+</div>

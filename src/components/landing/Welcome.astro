@@ -1,0 +1,31 @@
+---
+import Button from "../Button.astro";
+import SocialLink from "../SocialLink.astro";
+---
+
+<div class="landing min-h-svh">
+	<img src="/assets/logo.svg" alt="logo" class="max-w-[230px] mb-10">
+			<h1 class="font-normal text-6xl md:text-7xl text-light md:mt-10">
+				أنا
+				<span class="light-text-gradient font-bold">زياد</span>
+			</h1>
+			<h2 class="text-3xl md:text-[44px] text-center text-light mt-5">مطور مواقع و تطبيقات</h2>
+	
+			<ul class="w-full mt-8 md:mt-14 flex justify-center gap-16 md:mb-10 md:justify-between max-w-[450px]">
+				<li>
+					<SocialLink href='https://www.linkedin.com/in/ziyad-fallatah/' alt='x logo' imagePath='/assets/linkedin.svg'/>
+				</li>
+				<li>
+					<SocialLink href='https://x.com/zyad_fallatah' alt='x logo' imagePath='/assets/x.svg'/>
+				</li>
+				<li>
+					<SocialLink href='https://github.com/zyadfallatah' alt='x logo' imagePath='/assets/github.svg'/>
+				</li>
+			</ul>
+	
+			<div class="mt-12 flex w-full flex-col gap-5 sm:flex-row  justify-center items-center">
+				<Button variant={"primary"} text="شاهد أعمالي" href='#projects' languageLink='ar' className='w-full p-4 text-2xl max-w-[240px] md:text-[2rem] md:min-h-[90px]' />
+				<Button variant={"outline"} text="عني" href='#about' languageLink='ar' className='w-full p-4 text-2xl max-w-[240px] md:text-[2rem] md:min-h-[90px]' />
+			</div>
+
+</div>

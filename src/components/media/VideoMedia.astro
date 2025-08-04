@@ -1,0 +1,50 @@
+---
+import { cn } from "../../utils/utils";
+interface Props extends Pick<Project, "videosUrls"> {
+  videosUrls: {name: string, url: string}[]
+}
+
+const { videosUrls } = Astro.props
+
+---
+<div>
+  <h2 class="light-text-gradient text-4xl p-1 w-fit">مقاطع الفيديو</h2>
+  <video controls class="w-full h-[250px] lg:w-[500px] lg:h-[250px] mt-5" src={`${videosUrls.at(0)?.url}`} id="video">
+  </video>
+
+  <div class="grid lg:grid-cols-2 gap-10 gap-y-5 mt-4" id="buttons">
+    {videosUrls.map((video, i) => (
+      <div class={cn("border border-transparent cursor-pointer", i == 0 && "active")}>
+        <span class="bg-primary-lighter w-full h-16 block rounded-md"></span>
+        <h3 class="light-text-gradient mt-3 text-xl font-medium text-center w-full">{video.name}</h3>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .active {
+    border-radius: 6px;
+    box-shadow: 0 0 15px 1px #6D7B8D;
+    transition-duration: 500ms;
+  }
+</style>
+
+<script>
+  const projectName = window.location.pathname.slice(7);
+  const response = await fetch(`/api/${projectName}.json`)
+  const currentProject = await response.json()
+  const video = document.getElementById("video") as HTMLVideoElement
+  const btns = document.getElementById("buttons") as HTMLButtonElement
+  for (let i = 0; i < btns?.children.length; i++) {
+    const btn = btns.children.item(i);
+    btn?.addEventListener("click", (e) => {
+      // Remove 'active' from all buttons first
+      for (let j = 0; j < btns.children.length; j++) {
+        btns.children.item(j)?.classList.remove("active");
+      }
+      // Add 'active' to the clicked button
+      (e.currentTarget as HTMLElement).classList.add("active");
+      video.src = `${currentProject?.videosUrls?.at(i)?.url ?? ""}`;
+    });
+  }
