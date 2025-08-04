@@ -1,0 +1,13 @@
+{
+  "linkName": "devflow",
+  "title": "DevFlow",
+  "shortDescription": "موقع تواصل و أسئلة \nبين المطورين",
+  "technologies": [
+    { "name": "React", "icon": "/assets/react.svg" },
+    { "name": "Tailwind", "icon": "/assets/tailwindcss.svg" },
+    { "name": "MongoDB", "icon": "/assets/Mongodb.svg" }
+  ],
+  "metadata": ["المنصة: تطبيق ويب "],
+  "bannar": "/images/devflow-banner.svg",
+  "url": "https://devflow-six-tawny.vercel.app/"
+}

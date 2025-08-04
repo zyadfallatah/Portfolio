@@ -1,14 +1,17 @@
 ---
-import {projects} from "../../constants/index"
+// import {projects} from "../../constants/index"
+import { getCollection, getEntry } from "astro:content"
 import Button from "../Button.astro"
 import Project from "../Project.astro"
+
+const projects = await getCollection('projects');
 ---
 
 <div class="landing-reverse justify-start" id="projects">
   <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10">أعمالي</h2>
   <main class="relative space-y-20 lg:space-y-[12rem]">
     <span class="hidden lg:block absolute z-0 left-[51.5%] w-2 min-h-[600px] bg-linear-180 from-light-lighter to-[#9DA7B3] rounded-md"></span>
-    {projects.map(({linkName, ...rest}, index) => (
+    {projects.map(({data: {linkName, ...rest}}, index) => (
       <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? rest.title} project={rest} />
     ))}
 

@@ -1,6 +1,5 @@
 ---
 import { cn } from "../../utils/utils";
-import Button from "../Button.astro";
 interface Props extends Pick<Project, "videosUrls"> {
   videosUrls: {name: string, url: string}[]
 }
@@ -32,10 +31,9 @@ const { videosUrls } = Astro.props
 </style>
 
 <script>
-import { getCurrentProject } from "../../utils/utils";
-
   const projectName = window.location.pathname.slice(7);
-  const currentProject = getCurrentProject(projectName)
+  const response = await fetch(`/src/data/projects/project-${projectName}.json`)
+  const currentProject = await response.json()
   const video = document.getElementById("video") as HTMLVideoElement
   const btns = document.getElementById("buttons") as HTMLButtonElement
   for (let i = 0; i < btns?.children.length; i++) {

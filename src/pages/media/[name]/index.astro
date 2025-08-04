@@ -13,7 +13,7 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { name } = Astro.params
-const currentProject = getCurrentProject(name);
+const currentProject = await getCurrentProject(name);
 ---
 
 <Layout title={name}>

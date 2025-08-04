@@ -2,9 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../../layouts/Layout.astro";
 import Button from "../../../components/Button.astro";
-import { projects } from "../../../constants";
 import ProjectMeta from "../../../components/projectDetail/ProjectMeta.astro";
-import type { ACTION_ERROR_CODES } from "astro:actions";
 import ProjectHighlight from "../../../components/projectDetail/ProjectHighlight.astro";
 import { getCurrentProject } from "../../../utils/utils";
 export const getStaticPaths = (() => {
@@ -15,7 +13,7 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const {name} = Astro.params
-const currentProject = getCurrentProject(name);
+const currentProject = await getCurrentProject(name);
 ---
 <Layout title={name}>
   <div class="landing min-h-svh items-start justify-start pt-12">
