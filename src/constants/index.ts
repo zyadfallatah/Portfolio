@@ -38,9 +38,18 @@ export const projects: Project[] = [
       },
     ],
     videosUrls: [
-      { name: "الصفحة الرئيسية", url: "video1.mov" },
-      { name: "الخريطة", url: "video2.mov" },
-      { name: "صفحة زاد", url: "video2.mov" },
+      {
+        name: "الصفحة الرئيسية",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-video-1.mov",
+      },
+      {
+        name: "الخريطة",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-video-2.mov",
+      },
+      {
+        name: "صفحة زاد",
+        url: "https://ik.imagekit.io/zyadfallatah/mulabbi-video-3.mov",
+      },
     ],
   },
   {
