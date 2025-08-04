@@ -16,6 +16,12 @@ const {title} = Astro.props
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<!-- <meta name="generator" content={Astro.generator} /> -->
 		<title> {title ? `مشروع | ${title}` : "زياد | الموقع الشخصي"}</title>
+
+		<!-- Open graph -->
+		<meta property="og:title" content="زياد | الموقع الشخصي - zyad | Portfolio">
+		<meta property="og:description" content="موقع استعرض فيه المشاريع و الخبرات | Website showing my projects & experiences">
+		<meta property="og:image" content="/images/opengraph-image.png">
+		<meta property="og:url" content="https://portfolio.zyadfallatah.com/">
 	</head>
 	<body>
 		<slot />
