@@ -28,10 +28,10 @@
 - [x] Project expand for mobile
 - [x] View Project (for web its url, for mobile i need media player and images)
 - [x] (only for mobile application) Implement media player
-- [ ] Fill content in website which include:
+- [x] Fill content in website which include:
 - Image & Video upload
 - Fill the rest of the content (currently by hand until the CMS is ready)
-- [ ] Fill the metadata & SEO
+- [x] Fill the metadata & SEO
 
 ## Future
 
@@ -40,6 +40,5 @@
 - [ ] Implement Light mode (This going to be delayed)
 - [ ] Implement limiter (The concept will be changed)
 - [ ] Implement english version
-- [ ]
 
 ## Tech Stack
