@@ -5,7 +5,9 @@ type Props = {project: Project}
 const {project} = Astro.props;
 ---
 <aside class="lg:min-w-[250px]">
-  <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
+  <a href={project.url}>
+    <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
+  </a>
   <div class="flex gap-2 mt-3">
     {project.tags?.map((tag) => (
       <Button text={tag} variant="primary" className='flex-1 font-medium text-sm py-3' />

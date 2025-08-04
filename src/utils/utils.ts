@@ -16,3 +16,12 @@ export const getCurrentProject = async (name: string) => {
     .at(0);
   return currentProject?.data || null;
 };
+
+export const getCurrentProjectMarkdown = async (name: string) => {
+  const markdowns = await getCollection("projectExperince");
+  const currentProjectMarkdown = markdowns
+    .filter(({ id }) => id === name)
+    .at(0);
+
+  return currentProjectMarkdown;
+};

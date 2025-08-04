@@ -44,5 +44,9 @@ const projects = defineCollection({
   }),
 });
 
+const projectExperince = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/projectDetail" }),
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { projects };
+export const collections = { projects, projectExperince };

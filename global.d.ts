@@ -7,7 +7,6 @@ interface Project {
   bannar: string;
   tags?: string[];
   linkName?: string;
-  content?: string;
   url?: string;
   imagesUrl?: { name: string; url: string }[];
   videosUrls?: { name: string; url: string }[];

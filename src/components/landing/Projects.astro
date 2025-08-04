@@ -1,10 +1,11 @@
 ---
-// import {projects} from "../../constants/index"
-import { getCollection, getEntry } from "astro:content"
+import { getCollection } from "astro:content"
 import Button from "../Button.astro"
 import Project from "../Project.astro"
 
-const projects = await getCollection('projects');
+const projects = await getCollection('projects').then((collection) => {
+  return collection.reverse();
+});
 ---
 
 <div class="landing-reverse justify-start" id="projects">
