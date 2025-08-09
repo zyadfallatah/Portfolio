@@ -33,12 +33,16 @@
 - Fill the rest of the content (currently by hand until the CMS is ready)
 - [x] Fill the metadata & SEO
 
+## V2.1
+
+- [ ] Headless CMS (external or custom) to manage content
+- [ ] Adding Animation
+- [ ] All projects page
+
 ## Future
 
-- [ ] CMS (external or custom) to manage content
-- [ ] Connect to mongodb to update website when building
-- [ ] Implement Light mode (This going to be delayed)
-- [ ] Implement limiter (The concept will be changed)
 - [ ] Implement english version
+- [ ] Implement limiter (The concept will be changed)
+- [ ] Implement Light mode
 
 ## Tech Stack
