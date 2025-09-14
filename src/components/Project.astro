@@ -14,7 +14,7 @@ const {title, shortDescription, metadata, bannar, technologies, url} = project;
 // left-[41.5%] top-[33%]
 ---
 
-<div class={cn("flex flex-col items-center lg:items-start justify-center gap-6 mb-10 lg:mb-20", isMirroredToRight ? "md:flex-row-reverse lg:ml-[13rem]" : "md:flex-row lg:mr-[10rem]")}>
+<div class={cn("flex flex-col items-center lg:items-start justify-center gap-6 mb-10 lg:mb-20 opacity-0 project", isMirroredToRight ? "md:flex-row-reverse lg:ml-[13rem] translate-x-[200px] right" : "md:flex-row lg:mr-[10rem] translate-x-[-200px]")}>
   <ProjectData title={title} shortDescription={shortDescription} technologies={technologies}/>
   <div class="hidden lg:block w-16 z-10">
     <a href={`/projects/${linkName}`} class="relative block">
@@ -24,3 +24,4 @@ const {title, shortDescription, metadata, bannar, technologies, url} = project;
   </div>
 <ProjectBannar metadata={metadata} bannar={bannar} linkName={linkName} url={url}/ >
 </div>
+
