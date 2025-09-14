@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_tests",
+  "info": {
+    "displayName": "technologies",
+    "icon": "expand"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

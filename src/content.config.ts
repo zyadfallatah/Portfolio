@@ -5,10 +5,15 @@ import { glob } from "astro/loaders";
 
 // 3. Define your collection(s)
 const projects = defineCollection({
-  loader: glob({
-    pattern: "**/*.json",
-    base: "./src/data/projects",
-  }),
+  loader: async () => {
+    const res = await fetch(`${import.meta.env.BASE_DATA_URL}/projects`);
+    const data = (await res.json()).docs as Project[]; // Docs coming from the CMS
+
+    return data.map((e) => ({
+      id: e.title,
+      ...e,
+    }));
+  },
   schema: z.object({
     title: z.string(),
     shortDescription: z.string(),
@@ -19,9 +24,9 @@ const projects = defineCollection({
         icon: z.string(),
       })
     ),
-    metadata: z.array(z.string()),
+    metadata: z.array(z.object({ value: z.string() })),
     bannar: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.object({ value: z.string() })).optional(),
     linkName: z.string().optional(),
     content: z.string().optional(),
     url: z.string().optional(),

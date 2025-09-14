@@ -10,7 +10,7 @@ const {bannar, metadata, linkName, url} = Astro.props;
   <div class="flex flex-col gap-5 justify-between flex-1 pt-2">
     <div class="space-y-2">
       {metadata.map((data) => (
-        <p class="font-light text-light bg-linear-90 from-primary-darker to-[#4d4d4d] p-1 text-[.75rem] rounded-md w-full">{data}</p>
+        <p class="font-light text-light bg-linear-90 from-primary-darker to-[#4d4d4d] p-1 text-[.75rem] rounded-md w-full">{data.value}</p>
       ))}
     </div>
 

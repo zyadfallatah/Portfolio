@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_metadata",
+  "info": {
+    "displayName": "metadata",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

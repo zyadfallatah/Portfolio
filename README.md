@@ -38,6 +38,7 @@
 - [ ] Headless CMS (external or custom) to manage content
 - [ ] Adding Animation
 - [ ] All projects page
+- [ ] Fixing bugs & Adjustments
 
 ## Future
 
