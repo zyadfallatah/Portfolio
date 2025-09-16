@@ -36,12 +36,12 @@
 ## V2.1
 
 - [x] Adding Animation
-- [ ] Fixing bugs & Adjustments
+- [x] Fixing bugs & Adjustments
+- [ ] Implement Light mode
 
 ## Future
 
 - [ ] Implement english version
 - [ ] Implement limiter (The concept will be changed)
-- [ ] Implement Light mode
 
 ## Tech Stack
