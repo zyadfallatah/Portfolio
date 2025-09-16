@@ -16,7 +16,7 @@ const projects = await getCollection('projects').then((collection) => {
       <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? rest.title} project={rest} />
     ))}
 
-<Button text="قريباً" variant="disabled" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/>
+  <Button text="المزيد" variant="disabled" href="/projects" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/>
 </main>
 
 </div>
@@ -29,9 +29,9 @@ const projects = await getCollection('projects').then((collection) => {
 
   inView(projects, (project) => {
     const isMirroredToRight = project.classList.contains("right")
-    animate(project, {opacity: 1, x: isMirroredToRight ? -200 : 200}, {duration: .6, delay: stagger(2, {startDelay: .2})})
+    animate(project, {opacity: 1, x: isMirroredToRight ? -50 : 50}, {duration: .6, delay: stagger(2, {startDelay: .2})})
 
-    return () => animate(project, {opacity: .9, x: isMirroredToRight ? -205 : 205});
+    return () => animate(project, {opacity: .9, x: isMirroredToRight ? -55 : 55});
   })
   inView(line, (project) => {
     animate(project, {opacity: 1, height: 600}, {duration: 1.2, delay: .8})

@@ -40,10 +40,9 @@ switch (variant) {
 }
 
 const link = href &&  href
-// getRelativeLocaleUrl(languageLink ?? "ar", href)
 ---
 {href ? 
-<a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md duration-300", className, buttonStyles)}>
+<a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md duration-300 w-fit", className, buttonStyles)}>
   <button class={"cursor-pointer"}>
     {text}
   </button>

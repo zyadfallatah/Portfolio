@@ -35,8 +35,7 @@
 
 ## V2.1
 
-- [ ] Adding Animation
-- [ ] All projects page
+- [x] Adding Animation
 - [ ] Fixing bugs & Adjustments
 
 ## Future
