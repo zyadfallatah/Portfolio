@@ -13,7 +13,7 @@ interface Props {
 
 const { title, contentType, variant, limitText, isScrollable, className } = Astro.props
 
-const style = variant === "normal" || !variant ? "bg-light-lighter dark:bg-dark-lighter" : "bg-linear-90 from-[hsl(212.9,12.4%,71.8%)] dark:from-primary-darker to-light-lighter dark:to-[hsl(0,0%,25%)]"
+const style = variant === "normal" || !variant ? "bg-light dark:bg-dark-lighter" : "bg-linear-90 from-[hsl(212.9,12.4%,71.8%)] dark:from-primary-darker to-light-lighter dark:to-[hsl(0,0%,25%)]"
 const limit = limitText && "max-w-[600px]"
 const scrollLimit = isScrollable && "max-h-[200px] overflow-scroll"
 ---

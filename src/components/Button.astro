@@ -5,7 +5,7 @@ import { cn } from '../utils/utils';
 
 interface Props {
   text: string
-  variant: "primary" | "light" | "dark" | "outline" | "disabled"
+  variant: "primary" | "light" | "dark" | "outline" | "disabled" | "accent"
   href?: string
   languageLink?: "ar" | "en"
   icon?: string
@@ -34,6 +34,10 @@ switch (variant) {
     break;
   case "disabled":
     buttonStyles = `bg-primary-darker text-light-darker shadow shadow-primary-lighter`
+    break;
+  case "accent":
+    buttonStyles = `text-light bg-linear-180 from-accent-lighter to-accent border-accent-darker
+    shadow shadow-accent-darker hover:from-accent hover:to-accent-darker hover:border-accent`
     break;
   default:
     break;

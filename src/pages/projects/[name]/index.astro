@@ -5,6 +5,7 @@ import Button from "../../../components/Button.astro";
 import ProjectMeta from "../../../components/projectDetail/ProjectMeta.astro";
 import ProjectHighlight from "../../../components/projectDetail/ProjectHighlight.astro";
 import { getCurrentProject, getCurrentProjectMarkdown } from "../../../utils/utils";
+import Background from "../../../components/Background.astro";
 export const getStaticPaths = (() => {
   return [
     {params: {name: "mulabbi",}},
@@ -17,6 +18,7 @@ const currentProject = await getCurrentProject(name);
 const markdown = await getCurrentProjectMarkdown(name)
 ---
 <Layout title={name}>
+  <Background>
   <div class="landing min-h-svh items-start justify-start pt-12">
     <div class="flex flex-col items-center sm:items-start max-w-[1200px] w-full lg:px-10 mx-auto">
       <Button text="العودة" variant="light"  href='/#projects' className=" max-sm:text-[.75rem] p-2 px-4 md:p-3 md:px-5 mr-auto" icon="/assets/back-arrow.svg"/>
@@ -27,4 +29,5 @@ const markdown = await getCurrentProjectMarkdown(name)
       </div>
     </div>
   </div>
+  </Background>
 </Layout>

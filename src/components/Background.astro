@@ -1,0 +1,243 @@
+---
+// BackgroundAurora.astro
+// Fix: overflow:hidden was clipping blur spread on band edges.
+// Solution: bands live in a separate full-screen layer that clips
+// only via inset, not the root container.
+// Light opacities also bumped up so bands are actually visible.
+
+interface Props {
+  animate?: boolean;
+  variant?: "hero" | "subtle";
+  class?: string;
+}
+
+const { animate = true, variant = "hero", class: className = "" } = Astro.props;
+
+const bands = [
+  // Slate — dominant, large
+  { id: "s1", w: "85vw", h: "45vh", top: "2%",  left: "-24%", rot: "-18deg", blur: "120px",  drift: "drift-slow",   dk: "rgba(109,123,141,0.30)", lt: "rgba(109,123,141,0.25)" },
+  { id: "s2", w: "70vw", h: "38vh", top: "42%", left: "28%",  rot: "11deg",  blur: "70px",  drift: "drift-medium", dk: "rgba(109,123,141,0.50)", lt: "rgba(109,123,141,0.25)" },
+  { id: "s3", w: "55vw", h: "30vh", top: "18%", left: "52%",  rot: "26deg",  blur: "60px",  drift: "drift-slow",   dk: "rgba(90,106,125,0.42)",  lt: "rgba(90,106,125,0.25)"  },
+  { id: "s4", w: "45vw", h: "22vh", top: "68%", left: "-6%",  rot: "-8deg",  blur: "55px",  drift: "drift-fast",   dk: "rgba(74,90,109,0.38)",   lt: "rgba(74,90,109,0.25)"   },
+  // Teal — accent, smaller
+  { id: "t1", w: "42vw", h: "22vh", top: "58%", left: "62%",  rot: "19deg",  blur: "65px",  drift: "drift-medium", dk: "rgba(61,158,122,0.32)",  lt: "rgba(61,158,122,0.22)"  },
+  { id: "t2", w: "30vw", h: "16vh", top: "8%",  left: "70%",  rot: "-28deg", blur: "55px",  drift: "drift-fast",   dk: "rgba(61,158,122,0.25)",  lt: "rgba(61,158,122,0.18)"  },
+];
+
+const delays = [0, -4, -8, -3, -11, -6];
+---
+
+<div class:list={["aurora-root", variant === "subtle" && "aurora-subtle", className]}>
+
+  <!-- Bands live in their own layer, isolated from overflow clipping -->
+  <div class="aurora-layer" aria-hidden="true">
+    {bands.map((b, i) => (
+      <div
+        class:list={["aurora-band", animate && b.drift]}
+        data-band
+        data-parallax={(i + 1) * 0.35}
+        style={[
+          `width:${b.w}`,
+          `height:${b.h}`,
+          `top:${b.top}`,
+          `left:${b.left}`,
+          `filter:blur(${b.blur})`,
+          `transform:rotate(${b.rot})`,
+          `--rot:rotate(${b.rot})`,
+          `--lt:${b.lt}`,
+          `--dk:${b.dk}`,
+          `animation-delay:${delays[i]}s`,
+        ].join(";")}
+      />
+    ))}
+  </div>
+
+  <div class="aurora-vignette" aria-hidden="true" />
+  <div class="aurora-grain"   aria-hidden="true" />
+
+  <div class="aurora-content">
+    <slot />
+  </div>
+
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>(".aurora-root");
+  const bands = root?.querySelectorAll<HTMLElement>("[data-band]");
+  let rafId = 0;
+  let pointerX = 0;
+  let pointerY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  function loop() {
+    currentX += (pointerX - currentX) * 0.08;
+    currentY += (pointerY - currentY) * 0.08;
+
+    bands?.forEach((band) => {
+      const factor = Number(band.dataset.parallax ?? "1");
+      const x = (currentX * factor).toFixed(2);
+      const y = (currentY * factor).toFixed(2);
+      band.style.setProperty("--px", `${x}px`);
+      band.style.setProperty("--py", `${y}px`);
+    });
+
+    rafId = window.requestAnimationFrame(loop);
+  }
+
+  function onMove(event: PointerEvent) {
+    const nx = event.clientX / window.innerWidth - 0.5;
+    const ny = event.clientY / window.innerHeight - 0.5;
+    pointerX = nx * 16;
+    pointerY = ny * 12;
+  }
+
+  if (root && bands?.length) {
+    root.addEventListener("pointermove", onMove);
+    root.addEventListener("pointerleave", () => {
+      pointerX = 0;
+      pointerY = 0;
+    });
+    rafId = window.requestAnimationFrame(loop);
+    window.addEventListener("beforeunload", () => window.cancelAnimationFrame(rafId), { once: true });
+  }
+</script>
+
+<style>
+  /* ─── Root ─────────────────────────────────────────────────────────
+     No overflow:hidden here — that was killing the blur spread.
+     Clipping is handled by the layer's inset instead.
+  ──────────────────────────────────────────────────────────────────── */
+  .aurora-root {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: hsl(220, 16%, 86%);
+    transition: background-color 0.4s ease;
+  }
+
+  :global(.dark) .aurora-root {
+    background-color: #0e151f;
+  }
+
+  .aurora-subtle .aurora-band {
+    opacity: 0.72;
+  }
+
+  .aurora-subtle .aurora-grain {
+    opacity: 0.03;
+  }
+
+  :global(.dark) .aurora-subtle .aurora-grain {
+    opacity: 0.02;
+  }
+
+  /* ─── Band layer ───────────────────────────────────────────────────
+     position:fixed equivalent but in-flow: covers viewport,
+     clips to the root's bounding box via inset:0, and doesn't
+     truncate the blur kernel the way overflow:hidden does.
+  ──────────────────────────────────────────────────────────────────── */
+  .aurora-layer {
+    position: absolute;
+    inset: 0;
+    overflow: clip; /* clips layout, does NOT cut blur spread */
+    z-index: 0;
+  }
+
+  /* ─── Bands ─────────────────────────────────────────────────────── */
+  .aurora-band {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    background: var(--lt);
+    transition: background 0.4s ease;
+    transform: var(--rot) translate(var(--px, 0px), var(--py, 0px));
+  }
+
+  :global(.dark) .aurora-band {
+    background: var(--dk);
+  }
+
+  /* ─── Grain ─────────────────────────────────────────────────────── */
+  .aurora-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.045;
+    transition: opacity 0.4s ease;
+    animation: grain-drift 14s linear infinite;
+  }
+
+  :global(.dark) .aurora-grain {
+    opacity: 0.028;
+  }
+
+  /* ─── Vignette ──────────────────────────────────────────────────── */
+  .aurora-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: background 0.4s ease;
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      transparent 40%,
+      rgba(210, 215, 222, 0.5) 100%
+    );
+  }
+
+  :global(.dark) .aurora-vignette {
+    background: radial-gradient(
+      ellipse 100% 100% at 50% 50%,
+      transparent 45%,
+      rgba(9, 14, 20, 0.55) 100%
+    );
+  }
+
+  /* ─── Content ───────────────────────────────────────────────────── */
+  .aurora-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ─── Animations ────────────────────────────────────────────────── */
+  @keyframes drift-slow {
+    0%   { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px))   scale(1);    }
+    33%  { transform: var(--rot) translate(calc(var(--px, 0px) + 18px),  calc(var(--py, 0px) - 12px))  scale(1.02); }
+    66%  { transform: var(--rot) translate(calc(var(--px, 0px) - 10px),  calc(var(--py, 0px) + 16px))  scale(0.98); }
+    100% { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px))   scale(1);    }
+  }
+
+  @keyframes drift-medium {
+    0%   { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px))   scale(1);    }
+    40%  { transform: var(--rot) translate(calc(var(--px, 0px) - 22px),  calc(var(--py, 0px) + 10px))  scale(1.03); }
+    70%  { transform: var(--rot) translate(calc(var(--px, 0px) + 14px),  calc(var(--py, 0px) - 18px))  scale(0.97); }
+    100% { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px))   scale(1);    }
+  }
+
+  @keyframes drift-fast {
+    0%   { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px)); }
+    50%  { transform: var(--rot) translate(calc(var(--px, 0px) + 12px),  calc(var(--py, 0px) + 20px)); }
+    100% { transform: var(--rot) translate(calc(var(--px, 0px) + 0px),   calc(var(--py, 0px) + 0px)); }
+  }
+
+  @keyframes grain-drift {
+    0% { background-position: 0 0; }
+    50% { background-position: 24px 18px; }
+    100% { background-position: 0 0; }
+  }
+
+  .drift-slow   { animation: drift-slow   22s ease-in-out infinite; }
+  .drift-medium { animation: drift-medium 16s ease-in-out infinite; }
+  .drift-fast   { animation: drift-fast   11s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drift-slow,
+    .drift-medium,
+    .drift-fast,
+    .aurora-grain { animation: none; }
+  }
+</style>

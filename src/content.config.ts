@@ -11,34 +11,42 @@ const projects = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    titleEn: z.string().optional(),
     shortDescription: z.string(),
+    shortDescriptionEn: z.string().optional(),
     longDescription: z.string().optional(),
+    longDescriptionEn: z.string().optional(),
     technologies: z.array(
       z.object({
         name: z.string(),
         icon: z.string(),
-      })
+      }),
     ),
     metadata: z.array(z.string()),
+    metadataEn: z.array(z.string()).optional(),
     bannar: z.string(),
     tags: z.array(z.string()).optional(),
+    tagsEn: z.array(z.string()).optional(),
     linkName: z.string().optional(),
+    compact: z.boolean().optional(),
     content: z.string().optional(),
     url: z.string().optional(),
     imagesUrl: z
       .array(
         z.object({
           name: z.string(),
+          nameEn: z.string().optional(),
           url: z.string(),
-        })
+        }),
       )
       .optional(),
     videosUrls: z
       .array(
         z.object({
           name: z.string(),
+          nameEn: z.string().optional(),
           url: z.string(),
-        })
+        }),
       )
       .optional(),
   }),

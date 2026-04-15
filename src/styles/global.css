@@ -39,16 +39,20 @@ html {
   --color-dark-lighter: hsla(0, 0%, 20%, 100%);
   --color-dark: hsla(0, 0%, 15%, 100%);
   --color-dark-darker: hsla(0, 0%, 10%, 100%);
+
+  --color-accent-lighter: hsla(158, 44%, 60%);
+  --color-accent: hsla(158, 44%, 43%);
+  --color-accent-darker: hsla(158, 44%, 37%);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   .landing {
-    @apply bg-gradient-to-b from-light to-light-darker dark:from-dark dark:to-dark-darker flex flex-col justify-center items-center px-8 py-8;
+    @apply flex flex-col justify-center items-center px-8 py-8;
   }
   .landing-reverse {
-    @apply bg-gradient-to-t from-light to-light-darker dark:from-dark dark:to-dark-darker flex flex-col justify-center items-center px-8;
+    @apply flex flex-col justify-center items-center px-8;
   }
   .light-text-gradient {
     @apply bg-clip-text bg-linear-[40deg] from-dark-lighter dark:from-[#E8EAED] to-primary text-transparent;

@@ -4,6 +4,10 @@ export const hardSkills: { name: string; icon: string }[] = [
   { name: "Postgres", icon: "/assets/postgres.svg" },
   { name: "Typescript", icon: "/assets/ts-logo.svg" },
   { name: "Flutter", icon: "/assets/flutter.svg" },
+  { name: "AWS", icon: "/assets/ts-logo.svg" },
+  { name: "Docker", icon: "/assets/ts-logo.svg" },
+  { name: "Node", icon: "/assets/ts-logo.svg" },
+  { name: "MongoDB", icon: "/assets/Mongodb.svg" },
 ];
 
 export const softSkills: { name: string; icon?: string }[] = [

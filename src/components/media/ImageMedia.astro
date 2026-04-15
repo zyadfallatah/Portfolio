@@ -1,11 +1,16 @@
 ---
-  interface Props extends Pick<Project, "imagesUrl"> {}
+import { cn } from '../../utils/utils';
 
-  const {imagesUrl} = Astro.props
+  interface Props extends Pick<Project, "imagesUrl"> {
+    lang?: string;
+  }
+
+  const { imagesUrl, lang } = Astro.props
+  const isEn = lang === "en"
 ---
 
 <div class="flex-1">
-  <h2 class="light-text-gradient text-4xl p-1 w-fit mb-4">صور</h2>
+  <h2 class="light-text-gradient text-4xl p-1 w-fit mb-4">{isEn ? "Images" : "صور"}</h2>
   <div class="relative min-h-[428px] max-w-[250px] lg:max-w-[400px] overflow-x-hidden mx-auto lg:mx-0" id="images">
     {imagesUrl?.map((image, index) => {
       if (index === 0) return <img src={image.url} alt={image.name} class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] z-10 duration-500" data-active />
@@ -13,7 +18,7 @@
       return <img src={image.url} alt={image.name} class="absolute right-[100%] top-1/2 -translate-y-1/2 max-w-[135px] duration-500" />
     })}
   </div>
-  <div class="flex justify-center gap-8 w-full lg:mt-10">
+  <div class={cn("flex justify-center gap-8 w-full lg:mt-10", isEn && "flex-row-reverse")}>
     <p class="flex items-center text-dark bg-linear-[50deg] from-light to-primary-lighter text-2xl px-4 rounded-md"> <span id="current-image" class="px-1">1</span>  / {imagesUrl?.length ?? 0}</p>
     <img data-arrow="next" data-arrow src="/assets/back-arrow.svg" alt="arrow" class="bg-linear-90 from-light to-[#9DA7B3] p-2 rounded-full cursor-pointer">
   </div>

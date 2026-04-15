@@ -1,14 +1,15 @@
 ---
 import { cn } from "../../utils/utils";
 interface Props extends Pick<Project, "videosUrls"> {
-  videosUrls: {name: string, url: string}[]
+  videosUrls: {name: string, nameEn?: string, url: string}[]
+  lang?: string;
 }
 
-const { videosUrls } = Astro.props
-
+const { videosUrls, lang } = Astro.props
+const isEn = lang === "en"
 ---
 <div>
-  <h2 class="light-text-gradient text-4xl p-1 w-fit">مقاطع الفيديو</h2>
+  <h2 class="light-text-gradient text-4xl p-1 w-fit">{isEn ? "Videos" : "مقاطع الفيديو"}</h2>
   <video controls class="w-full h-[250px] lg:w-[500px] lg:h-[250px] mt-5" src={`${videosUrls.at(0)?.url}`} id="video">
   </video>
 
@@ -16,7 +17,7 @@ const { videosUrls } = Astro.props
     {videosUrls.map((video, i) => (
       <div class={cn("border border-transparent cursor-pointer", i == 0 && "active")}>
         <span class="bg-primary-lighter w-full h-16 block rounded-md"></span>
-        <h3 class="light-text-gradient mt-3 text-xl font-medium text-center w-full">{video.name}</h3>
+        <h3 class="light-text-gradient mt-3 text-xl font-medium text-center w-full">{isEn ? video.nameEn  : video.name}</h3>
       </div>
     ))}
   </div>
@@ -31,7 +32,7 @@ const { videosUrls } = Astro.props
 </style>
 
 <script>
-  const projectName = window.location.pathname.slice(7);
+  const projectName = window.location.pathname.split('/').at(-1);
   const response = await fetch(`/api/${projectName}.json`)
   const currentProject = await response.json()
   const video = document.getElementById("video") as HTMLVideoElement

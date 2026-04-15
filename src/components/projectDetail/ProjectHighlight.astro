@@ -4,20 +4,22 @@ import Highlight from "../Highlight.astro";
 import Prose from "../Prose.astro";
 import type { CollectionEntry } from "astro:content";
 
-type Props = {project:Project, markdown: CollectionEntry<"projectExperince">};
-const {project, markdown} = Astro.props
+type Props = {project:Project, markdown: CollectionEntry<"projectExperince">, lang?: 'ar' | 'en'};
+const {project, markdown, lang = 'ar'} = Astro.props
 
-const { longDescription } = project;
+const description = lang === 'en' ? (project.longDescriptionEn ?? project.longDescription) : project.longDescription;
+const overviewTitle = lang === 'en' ? 'Project Overview' : 'وصف دقيق للمشروع';
+const experienceTitle = lang === 'en' ? 'My Personal Experience' : 'تجاربي الشخصية مع المشروع';
 const { Content  } = await render(markdown)
 ---
 
 <div class="w-full overflow-y-scroll max-h-[800px]">
-  <Highlight title="وصف دقيق للمشروع" contentType="Default" variant="special">
+  <Highlight title={overviewTitle} contentType="Default" variant="special">
     <p class="text-dark-darker dark:text-light font-light text-[1rem] md:text-[1rem] lg:text-xl">
-      {longDescription}
+      {description}
     </p>
   </Highlight>
-  <Highlight title="تجاربي الشخصية مع المشروع" contentType="Custom" className="mt-5">
+  <Highlight title={experienceTitle} contentType="Custom" className="mt-5">
     <Prose>
       <Content />
     </Prose>

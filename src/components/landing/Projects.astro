@@ -1,22 +1,52 @@
 ---
 import { getCollection } from "astro:content"
 import Button from "../Button.astro"
+import CompactProject from "../CompactProject.astro"
 import Project from "../Project.astro"
+
+interface Props {
+  lang?: "ar" | "en"
+}
+
+const { lang = "ar" } = Astro.props;
 
 const projects = await getCollection('projects').then((collection) => {
   return collection.reverse();
 });
+const featuredProjects = projects.filter(({ data }) => !data.compact);
+const compactProjects = projects
+  .filter(({ data }) => data.compact)
+  .slice(0, 3);
 ---
 
 <div class="landing-reverse justify-start" id="projects">
-  <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10">أعمالي</h2>
-  <main class="relative space-y-20 lg:space-y-[12rem]">
-    <span class="hidden lg:block absolute z-0 left-[51.4%] translate-y-2 w-2 bg-linear-180 from-dark-lighter dark:from-light-lighter to-[#9DA7B3] rounded-md project-line"></span>
-    {projects.map(({data: {linkName, ...rest}}, index) => (
-      <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? rest.title} project={rest} />
-    ))}
+  <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10">{lang === 'en' ? 'My Work' : 'أعمالي'}</h2>
+  <main class="relative">
+    {featuredProjects.map(({data}, index) => {
+      const { linkName, ...rest } = data;
+      const title = lang === 'en' ? (data.titleEn ?? data.title) : data.title;
+      const shortDescription = lang === 'en' ? (data.shortDescriptionEn ?? data.shortDescription) : data.shortDescription;
+      const metadata = lang === 'en' ? (data.metadataEn ?? data.metadata) : data.metadata;
+      return <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? title} project={{...rest, title, shortDescription, metadata}} lang={lang} />;
+    })}
 
-  <Button text="🤌" variant="disabled" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/>
+    {compactProjects.length > 0 && (
+      <section class="mt-10 rounded-2xl border border-[rgba(101,112,128,0.22)] bg-[rgba(244,245,247,0.38)] p-4 md:p-6 dark:border-[rgba(92,203,160,0.2)] dark:bg-[rgba(14,21,31,0.45)]">
+        <h3 class="light-text-gradient mb-5 text-3xl font-bold md:text-4xl">
+          {lang === "en" ? "More Projects" : "مشاريع إضافية"}
+        </h3>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {compactProjects.map(({ data }) => {
+            const title = lang === "en" ? (data.titleEn ?? data.title) : data.title;
+            const shortDescription = lang === "en" ? (data.shortDescriptionEn ?? data.shortDescription) : data.shortDescription;
+            const metadata = lang === "en" ? (data.metadataEn ?? data.metadata) : data.metadata;
+            return <CompactProject project={{ ...data, title, shortDescription, metadata }} lang={lang} />;
+          })}
+        </div>
+      </section>
+    )}
+
+  <Button text={lang === "en" ? "View all projects" : "عرض كل المشاريع"} href={lang === "en" ? "/en/projects/allProject" : "/projects/allProject"} variant="light" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/>
 </main>
 
 </div>
@@ -25,17 +55,17 @@ const projects = await getCollection('projects').then((collection) => {
   import { animate, inView, stagger } from "motion";
 
   const projects = document.querySelectorAll(".project");
-  const line = document.querySelector(".project-line")!;
+  const compactProjects = document.querySelectorAll(".compact-project");
 
   inView(projects, (project) => {
     const isMirroredToRight = project.classList.contains("right")
-    animate(project, {opacity: 1, x: isMirroredToRight ? -50 : 50}, {duration: .6, delay: stagger(2, {startDelay: .2})})
+    animate(project, {opacity: 1, x: isMirroredToRight ? -50 : 50, }, {duration: .6, delay: stagger(2, {startDelay: .2})})
 
     return () => animate(project, {opacity: .9, x: isMirroredToRight ? -55 : 55});
   })
-  inView(line, (project) => {
-    animate(project, {opacity: 1, height: 600}, {duration: 1.2, delay: .8})
 
-    return () => animate(project, {opacity: .7});
+  inView(compactProjects, (item) => {
+    animate(item, { opacity: 1, y: [20, 0] }, { duration: .45 });
+    return () => animate(item, { opacity: .92, y: 4 });
   })
 </script>

@@ -1,12 +1,13 @@
 ---
 import Button from "../Button.astro";
 interface Props extends Pick<Project, "metadata" | "bannar" | "linkName" | "url" > {
+  lang?: "ar" | "en"
 }
 
-const {bannar, metadata, linkName, url} = Astro.props;
+const {bannar, metadata, linkName, url, lang = "ar"} = Astro.props;
 ---
 
-<div class="flex flex-col-reverse lg:flex-row justify-between gap-2 lg:w-[420px] bg-linear-90 from-dark-lighter dark:from-light-lighter to-primary-darker dark:to-primary-lighter rounded-md p-2">
+<div class="relative flex flex-col-reverse lg:flex-row justify-between gap-2 lg:w-[420px] bg-linear-90 from-dark-lighter dark:from-light-lighter to-primary-darker dark:to-primary-lighter rounded-md p-2">
   <div class="flex flex-col gap-5 justify-between flex-1 pt-2">
     <div class="space-y-2">
       {metadata.map((data) => (
@@ -15,17 +16,15 @@ const {bannar, metadata, linkName, url} = Astro.props;
     </div>
 
     <div class="flex gap-2 pb-2">
-      <Button text="معاينة" variant="primary" className=" flex-1 p-1.5" href={url}/>
-      <Button text="الكود" variant="light" className="flex-1 p-1.5" href={`https://github.com/zyadfallatah/${linkName}`}/>
+      <Button text={lang === 'en' ? 'Preview' : 'معاينة'} variant="accent" className=" flex-1 p-1.5" href={url}/>
+      <Button text={lang === 'en' ? 'Code' : 'الكود'} variant="light" className="flex-1 p-1.5" href={`https://github.com/zyadfallatah/${linkName}`}/>
     </div>
   </div>
-  <div class="relative">
-    <div class="absolute -top-5 -right-5 lg:hidden">
-      <a href={`/projects/${linkName}`} class="relative block">
+    <div class="absolute -top-4 -right-4">
+      <a href={`projects/${linkName}`} class="relative block">
         <img src="/assets/hexagon.svg" alt="hexagon icon" class="max-w-8" >
-        <img src="/assets/external-link-alt.svg" alt="hwllo" class="absolute left-[30%] top-[33%] max-w-4">
+        <img src="/assets/external-link-alt.svg" alt="" class="absolute left-[56%] top-[52%] -translate-1/2 max-w-4">
       </a>
     </div>
     <img src={bannar} alt="mulabbi banner" class="w-full lg:max-w-[260px]">
-  </div>
 </div>

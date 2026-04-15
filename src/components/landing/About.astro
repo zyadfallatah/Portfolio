@@ -1,48 +1,75 @@
 ---
 import { experinces, hardSkills, softSkills } from "../../constants"
+import { en } from "../../i18n/en"
+import { cn } from "../../utils/utils"
 import Highlight from "../Highlight.astro"
 import SkillGroup from "../skill-group.astro"
 import Footer from "./Footer.astro"
+
+interface Props {
+  lang?: "ar" | "en"
+}
+
+const { lang = "ar" } = Astro.props;
+const t = lang === 'en' ? en : null;
+const currentExperiences = t ? t.experiences : experinces;
+const currentSoftSkills = t ? t.softSkills : softSkills;
+const aboutCardClass = "relative border border-[rgba(74,90,109,0.22)] bg-[linear-gradient(120deg,rgba(74,90,109,0.02)_35%,rgba(255,255,255,0.30)_100%)] shadow-[0_10px_28px_rgba(80,96,114,0.16),inset_0_0_0_1px_rgba(255,255,255,0.2)] backdrop-saturate-115 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(61,158,122,0.42)] hover:shadow-[0_16px_34px_rgba(61,158,122,0.22),inset_0_0_0_1px_rgba(61,158,122,0.24)] dark:border-[rgba(92,203,160,0.24)] dark:bg-[linear-gradient(120deg,rgba(61,158,122,0.26),rgba(20,30,44,0.88)_45%,rgba(14,21,31,0.96)_100%)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.42),inset_0_0_0_1px_rgba(92,203,160,0.12)] dark:hover:border-[rgba(92,203,160,0.46)] dark:hover:shadow-[0_18px_38px_rgba(40,177,130,0.26),inset_0_0_0_1px_rgba(92,203,160,0.28)]";
 ---
 <div class="landing min-h-[90svh] justify-start md:items-start max-sm:pt-10 pb-10" id="about">
   <div class="w-full lg:max-w-[1440px] mx-auto">
-    <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">عني</h2>
+    <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">{t ? t.aboutHeading : 'عني'}</h2>
 
     <div class="lg:flex gap-20 justify-center">
-      <main class="space-y-5">
-        <Highlight title="نبذة" contentType="Default" variant="special" limitText={true}>
-          اسمي <span class="light-text-gradient">زياد</span> ، طالب علوم حاسب من جامعة أم القرى
+      <main class="space-y-5 about-item translate-x-[30px] opacity-0">
+        <Highlight title={t ? t.bioTitle : 'نبذة'} contentType="Default" variant="special" limitText={true} className={aboutCardClass}>
+          {t ? t.bioText : <>اسمي <span class="light-text-gradient">زياد</span> ، طالب علوم حاسب من جامعة أم القرى</>}
         </Highlight>
-        <Highlight title="وصف" contentType="Default" limitText={true}>
-          أقوم بتصميم و تطوير حلول برمجية تعمل على تحسين حياة الأفراد و المجتمعات، مع التركيز على الجودة العالية و الأداء المتميز، و دائماً ما أتبع أحدث المعايير التقنية و أفضل الممارسات
+        <Highlight title={t ? t.descTitle : 'وصف'} contentType="Default" limitText={true} className={aboutCardClass}>
+          {t ? t.descText : 'أقوم بتصميم و تطوير حلول برمجية تعمل على تحسين حياة الأفراد و المجتمعات، مع التركيز على الجودة العالية و الأداء المتميز، و دائماً ما أتبع أحدث المعايير التقنية و أفضل الممارسات'}
         </Highlight>
-        <Highlight title="الخبرة" contentType="Custom" limitText={true} isScrollable={true}>
-          {experinces.map((experince) => (
+        <Highlight title={t ? t.experienceTitle : 'الخبرة'} contentType="Custom" limitText={true} isScrollable={true} className={aboutCardClass}>
+          {currentExperiences.map((experince) => (
             <>
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-1 sm:gap-2">
-                  <img src="/assets/d-shape.svg" alt="D Shape" class="max-sm:max-w-4">
+                  <img src="/assets/d-shape.svg" alt="D Shape" class={cn("max-sm:max-w-4", lang === "en" && "rotate-y-180")}>
                   <h3 class="light-text-gradient text-[.9rem] sm:text-xl">{experince.company}</h3>
                 </div>
-                <p class="text-[.9rem] sm:text-xl text-dark-lighter dark:text-light">{experince.durationInMonths} شهور - {experince.type === "intern" ? "تدريب" : "غير محدد"}</p>
+                <p class="text-[.9rem] sm:text-xl text-dark-lighter dark:text-light">{experince.durationInMonths} {t ? t.months : 'شهور'} - {experince.type === "intern" ? (t ? t.internLabel : 'تدريب') : (t ? 'N/A' : 'غير محدد')}</p>
               </div>
               <span class="flex items-start mr-1.5 sm:mr-3 gap-2">
-                <img src="/assets/attach-to-d.svg" alt="design">
+                <img src="/assets/attach-to-d.svg" alt="design" class={lang === "en" ? "rotate-y-180 ml-3.5" : ""}>
                 <p class="text-dark-lighter dark:text-light text-[1rem] tracking-normal pt-1.5">{experince.description}</p>
               </span>
             </>
           ))}
         </Highlight>
       </main>
-      <aside class="flex flex-col items-center">
-        <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1 max-lg:mt-4">المهارات</h3>
-        <SkillGroup text="التقنية" skillSets={hardSkills}
-        />
-        <SkillGroup text="الناعمة" skillSets={softSkills}
-        />
+      <aside class="flex flex-col items-center about-item translate-x-[-30px] opacity-0">
+        <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1 max-lg:mt-4">{t ? t.skillsHeading : 'المهارات'}</h3>
+        <SkillGroup lang={lang} text={t ? t.hardSkillsLabel : 'التقنية'} skillSets={hardSkills} />
+        <SkillGroup lang={lang} text={t ? t.softSkillsLabel : 'الناعمة'} skillSets={currentSoftSkills} />
       </aside>
 
     </div>
   </div>
 </div>
 <Footer />
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const aboutItems = document.querySelectorAll(".about-item");
+
+  inView(aboutItems, (item) => {
+    const isSkillsColumn = item.tagName.toLowerCase() === "aside";
+    animate(
+      item,
+      { opacity: 1, x: isSkillsColumn ? 30 : -30, position: "relative" },
+      { duration: 0.6, delay: stagger(0.2, { startDelay: 0.2 }) }
+    );
+
+    return () => animate(item, { opacity: 0, x: isSkillsColumn ? -30 : 30, position: "absolute" });
+  });
+</script>

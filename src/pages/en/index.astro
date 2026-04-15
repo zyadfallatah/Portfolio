@@ -1,11 +1,15 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-
-
+import Background from '../../components/Background.astro';
+import About from '../../components/landing/About.astro';
+import Projects from '../../components/landing/Projects.astro';
+import Welcome from '../../components/landing/Welcome.astro';
+import LayoutEn from '../../layouts/LayoutEn.astro';
 ---
 
-<Layout>
-	<div class="bg-gradient-to-b bg-no-repeat from-dark to-dark-darker min-h-svh flex flex-col items-center">
-		<img src="/assets/logo.svg" alt="logo" class="max-w-[230px]">
-	</div>
-</Layout>
+<LayoutEn>
+	<Background>
+		<Welcome lang="en" />
+		<Projects lang="en" />
+		<About lang="en" />
+	</Background>
+</LayoutEn>
