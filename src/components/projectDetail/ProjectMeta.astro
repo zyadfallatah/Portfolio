@@ -8,9 +8,7 @@ const metadata = lang === 'en' ? (project.metadataEn ?? project.metadata) : proj
 const technologiesLabel = lang === 'en' ? 'Technologies' : 'التقنيات';
 ---
 <aside class="lg:min-w-[250px]">
-  <a href={project.url}>
-    <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
-  </a>
+  <img src={project.bannar} alt={`${project.title} banner`} class="w-full max-h-[300px] object-cover rounded-md">
   <div class="flex gap-2 mt-3">
     {tags?.map((tag) => (
       <Button text={tag} variant="primary" className='flex-1 font-medium text-sm py-3' />
