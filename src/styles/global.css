@@ -39,16 +39,52 @@ html {
   --color-dark-lighter: hsla(0, 0%, 20%, 100%);
   --color-dark: hsla(0, 0%, 15%, 100%);
   --color-dark-darker: hsla(0, 0%, 10%, 100%);
+
+  --color-accent-lighter: hsla(158, 44%, 60%);
+  --color-accent: hsla(158, 44%, 43%);
+  --color-accent-darker: hsla(158, 44%, 37%);
+
+  --color-sanad-void: #0E0F1A;
+  --color-sanad-deep: #15162A;
+  --color-sanad-elevated: #1E2040;
+  --color-sanad-border: #2B2D52;
+  --color-sanad-amber-300: #FCD34D;
+  --color-sanad-amber-500: #F59E0B;
+  --color-sanad-amber-600: #D97706;
+  --color-sanad-teal-300: #5EEAD4;
+  --color-sanad-teal-500: #14B8A6;
+  --color-sanad-teal-700: #0F766E;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   .landing {
-    @apply bg-gradient-to-b from-dark to-dark-darker flex flex-col justify-center items-center px-8 py-8;
+    @apply flex flex-col justify-center items-center px-8 py-8;
   }
   .landing-reverse {
-    @apply bg-gradient-to-t from-dark to-dark-darker flex flex-col justify-center items-center px-8;
+    @apply flex flex-col justify-center items-center px-8;
   }
   .light-text-gradient {
-    @apply bg-clip-text bg-linear-[40deg] from-[#E8EAED] to-primary text-transparent;
+    @apply bg-clip-text bg-linear-[40deg] from-dark-lighter dark:from-[#E8EAED] to-primary text-transparent;
   }
+  .sanad-text-gradient {
+    @apply bg-clip-text bg-linear-[40deg] from-[#FCD34D] to-[#F59E0B] text-transparent;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float-animation {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
 }

@@ -1,0 +1,19 @@
+---
+import AllProject from "../../../../components/AllProject.astro";
+import Background from "../../../../components/Background.astro";
+import Button from "../../../../components/Button.astro";
+import LayoutEn from "../../../../layouts/LayoutEn.astro";
+---
+
+<LayoutEn title="all-projects">
+  <Background variant="subtle">
+    <div class="landing min-h-svh items-start justify-start pt-12 pb-14">
+      <div class="w-full">
+        <div class="max-w-[1200px] mx-auto px-4 md:px-6 mb-5">
+          <Button text="Back" variant="light" href="/en/#projects" className="max-sm:text-[.75rem] p-2 px-4 md:p-3 md:px-5 mr-auto" icon="/assets/back-arrow.svg" />
+        </div>
+        <AllProject lang="en" />
+      </div>
+    </div>
+  </Background>
+</LayoutEn>

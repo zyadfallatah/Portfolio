@@ -1,0 +1,23 @@
+{
+  "linkName": "sanad",
+  "title": "سند",
+  "shortDescription": "بني لأنه لا وسط ، إما إدارة مشاريع أو لا تنظيم أبداً. بني لواحد ، جاهز لمجموعة.",
+  "longDescription": "سَنَد مساحة مؤقتة تُفتح قبل الموعد النهائي — جلسات، خزنة مشتركة، و إشارات تحقق. تُغلق تلقائيًا لحظة انتهاء الوقت. تعمل سواء حضر الفريق أم لا.",
+  "titleEn": "Sanad",
+  "shortDescriptionEn": "No middle ground — full PM or nothing\nBuilt for one, ready for a group",
+  "longDescriptionEn": "Sanad is a temporary collaboration space that opens before the deadline — sessions, a shared vault, and checkpoints. It closes automatically when time runs out. Built to work whether the whole team shows up or not.",
+  "metadataEn": ["Platform: Web App"],
+  "tags": ["مشروع شخصي", "تنظيم أعمال", "لحظي"],
+  "tagsEn": ["Personal Project", "Task Management", "Real-time"],
+  "technologies": [
+    { "name": "typescript", "icon": "/assets/ts-logo.svg" },
+    { "name": "socket.io", "icon": "/assets/socketio.svg" },
+    { "name": "postgres", "icon": "/assets/postgres.svg" },
+    { "name": "redis", "icon": "/assets/redis.svg" },
+    { "name": "node", "icon": "/assets/node.svg" }
+  ],
+  "metadata": ["المنصة: تطبيق ويب"],
+  "bannar": "/images/sanad-banner.svg",
+  "url": "https://sanad.zyadfallatah.com",
+  "highlight": true
+}

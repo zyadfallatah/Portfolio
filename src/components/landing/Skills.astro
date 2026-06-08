@@ -1,0 +1,61 @@
+---
+import { skillCategories } from '../../constants';
+import { en } from '../../i18n/en';
+import Button from '../Button.astro';
+
+interface Props {
+  lang?: "ar" | "en";
+}
+
+const { lang = "ar" } = Astro.props;
+const t = lang === 'en' ? en : null;
+---
+
+<div class="landing justify-start md:items-start pb-16 pt-4" id="skills">
+  <div class="w-full lg:max-w-[1440px] mx-auto">
+    <h2 class="light-text-gradient max-sm:text-5xl text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">
+      {t ? t.skillsHeading : 'المهارات'}
+    </h2>
+
+    <div class="skill-categories flex flex-wrap gap-6 justify-center px-4">
+      {skillCategories.map((category) => (
+        <div class="skill-cat-card opacity-0 flex-1 min-w-[160px] max-w-[260px]
+          rounded-xl border border-[rgba(101,112,128,0.28)]
+          bg-[linear-gradient(180deg,rgba(255,255,255,0.75)_0%,rgba(244,245,247,0.88)_100%)]
+          shadow-[0_4px_16px_rgba(85,99,117,0.14)]
+          dark:border-[rgba(127,142,163,0.28)]
+          dark:bg-[linear-gradient(180deg,rgba(35,48,65,0.76)_0%,rgba(17,24,35,0.94)_100%)]
+          dark:shadow-[0_8px_24px_rgba(0,0,0,0.32)]
+          p-5 transition-all duration-300
+          hover:-translate-y-1 hover:border-[rgba(101,112,128,0.52)] hover:shadow-[0_8px_24px_rgba(85,99,117,0.24)]
+          dark:hover:border-[rgba(127,142,163,0.5)] dark:hover:shadow-[0_12px_28px_rgba(0,0,0,0.45)]">
+          <p class="text-xs font-bold uppercase tracking-widest text-primary dark:text-primary-lighter mb-4">
+            {lang === 'en' ? category.labelEn : category.labelAr}
+          </p>
+          <div class="flex flex-col gap-2">
+            {category.skills.map((skill) => (
+              <Button text={skill.name} variant='light' icon={skill.icon} className='p-2 w-full'/>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const container = document.querySelector<HTMLElement>(".skill-categories");
+  if (container) {
+    const cards = container.querySelectorAll<HTMLElement>(".skill-cat-card");
+    inView(container, () => {
+      animate(
+        cards,
+        { opacity: 1, y: [20, 0] },
+        { duration: 0.45, delay: stagger(0.12, { startDelay: 0.1 }) }
+      );
+      return () => animate(cards, { opacity: 0, y: 20 });
+    });
+  }
+</script>

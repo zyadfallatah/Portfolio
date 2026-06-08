@@ -1,0 +1,134 @@
+---
+interface Props {
+  project: Project;
+  linkName: string;
+  lang?: "ar" | "en";
+}
+
+const { project, linkName, lang = "ar" } = Astro.props;
+const { title, shortDescription, metadata, technologies, url, bannar } = project;
+---
+
+<section
+  class="highlight-project w-full rounded-2xl overflow-hidden mb-10 lg:mb-20 opacity-0"
+  style="background: linear-gradient(160deg, #0E0F1A 0%, #15162A 55%, #0D1420 100%); border: 0.5px solid #2B2D52;"
+>
+  <div class="flex flex-col md:flex-row items-center justify-between gap-8 p-6">
+    <div class="space-y-4 max-w-xs">
+      <h3 class="sanad-text-gradient text-4xl lg:text-5xl font-bold">{title}</h3>
+      <p class="text-[#8B92A9] text-base lg:text-lg whitespace-pre-line">{shortDescription}</p>
+
+      <div class="flex flex-wrap gap-2">
+        {metadata.map((m) => (
+          <span
+            class="text-xs px-2 py-1 rounded"
+            style="background: rgba(20,184,166,0.08); color: #5EEAD4; border: 0.5px solid #2B2D52;"
+          >
+            {m}
+          </span>
+        ))}
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        {technologies.map((tech) => (
+          <span
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium"
+            style="background: rgba(255,255,255,0.03); color: #8B92A9; border: 0.5px solid #2B2D52;"
+          >
+            <img src={tech.icon} alt={tech.name} class="w-4 h-4" />
+            {tech.name}
+          </span>
+        ))}
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <a
+          href={url}
+          target="_blank"
+          class="flex-1 text-center py-2.5 px-5 rounded-md font-semibold text-sm transition-colors duration-200 hover:bg-[#D97706]"
+          style="background: #F59E0B; color: #0E0F1A;"
+        >
+          {lang === "en" ? "Preview" : "معاينة"}
+        </a>
+        <a
+          href={`projects/${linkName}`}
+          class="flex-1 text-center py-2.5 px-5 rounded-md font-semibold text-sm transition-colors duration-200 hover:bg-[rgba(245,158,11,0.08)]"
+          style="border: 0.5px solid #2B2D52; color: #FCD34D; background: transparent;"
+        >
+          {lang === "en" ? "Details" : "التفاصيل"}
+        </a>
+      </div>
+    </div>
+
+    <!-- Mini session dashboard mock -->
+    <div
+      class="float-animation relative flex-shrink-0 w-full max-w-[280px] lg:max-w-[300px] rounded-xl overflow-hidden"
+      style="background: #0E0F1A; border: 0.5px solid #2B2D52;"
+    >
+      <!-- App banner / brand header -->
+      <img src={bannar} alt={title} class="w-full block" style="border-bottom: 0.5px solid #2B2D52;" />
+
+      <!-- Header -->
+      <div
+        class="flex items-center justify-between px-4 py-3"
+        style="border-bottom: 0.5px solid #2B2D52;"
+      >
+        <span class="text-sm font-semibold" style="color: #8B92A9;">
+          {lang === "en" ? "War Rooms" : "غرف العمل"}
+        </span>
+        <span class="text-xs px-2 py-0.5 rounded" style="background: rgba(245,158,11,0.1); color: #F59E0B; border: 0.5px solid rgba(245,158,11,0.2);">
+          + {lang === "en" ? "New" : "إنشاء"}
+        </span>
+      </div>
+
+      <!-- Active session card -->
+      <div
+        class="px-4 py-3 space-y-2"
+        style="background: linear-gradient(135deg, #15162A 0%, #042F2E 100%); border-inline-start: 2px solid #14B8A6; border-bottom: 0.5px solid #2B2D52;"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="pulse-dot w-2 h-2 rounded-full inline-block" style="background: #14B8A6;"></span>
+            <span class="text-sm font-medium" style="color: #E2E8F0;">
+              {lang === "en" ? "Graduation Project" : "مشروع التخرج"}
+            </span>
+          </div>
+          <span class="text-xs font-mono" style="color: #FCD34D;">02:34:15</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs" style="color: #5EEAD4;">
+            {lang === "en" ? "Active" : "نشط"}
+          </span>
+          <div class="flex gap-1">
+            {[0,1,2].map(() => (
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold"
+                style="background: rgba(20,184,166,0.15); color: #5EEAD4; border: 0.5px solid #14B8A6;">
+                س
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Pending session card -->
+      <div
+        class="px-4 py-3 space-y-1.5"
+        style="border-inline-start: 2px solid #2B2D52;"
+      >
+        <span class="text-sm font-medium block" style="color: #5B607A;">
+          {lang === "en" ? "Submitting final report" : "تسليم التقرير النهائي"}
+        </span>
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs" style="color: #3D4160;">
+            {lang === "en" ? "Pending" : "قيد الانتظار"}
+          </span>
+          <span class="text-xs" style="color: #2B2D52;">•</span>
+          <span class="text-xs" style="color: #3D4160;">
+            {lang === "en" ? "Starts in 3h" : "يبدأ خلال 3 ساعات"}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,18 +1,44 @@
 ---
 import "../styles/global.css"
+
+interface Props {
+	title?: string
+}
+const {title} = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<!-- <meta name="generator" content={Astro.generator} /> -->
-		<title>zyadfallatah portfoilio</title>
+		<title>{title ? `Project | ${title}` : "Ziyad | Portfolio"}</title>
+
+		<!-- Open graph (facebook)-->
+		<meta property="og:title" content="Ziyad | Portfolio">
+		<meta property="og:description" content="Website showcasing my projects & experiences">
+		<meta property="og:image" content="/images/opengraph-image.png">
+		<meta property="og:url" content="https://portfolio.zyadfallatah.com/en/">
+
+		<!-- Open graph (twitter)-->
+		<meta property="twitter:title" content="Ziyad | Portfolio">
+		<meta property="twitter:description" content="Website showcasing my projects & experiences">
+		<meta property="twitter:image" content="/images/opengraph-image.png">
+		<meta property="twitter:url" content="https://portfolio.zyadfallatah.com/en/">
+		<script is:inline>
+			const currentPath = window.location.pathname;
+			const isOnboardingRoute = currentPath === "/onboarding/" || currentPath === "/onboarding";
+			if (!isOnboardingRoute && !localStorage.getItem("lang")) {
+				const next = `${currentPath}${window.location.search}${window.location.hash}`;
+				window.location.replace(`/onboarding/?next=${encodeURIComponent(next)}`);
+			}
+			if (localStorage.getItem("theme")) {
+				document.documentElement.classList.add("dark");
+			}
+		</script>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-

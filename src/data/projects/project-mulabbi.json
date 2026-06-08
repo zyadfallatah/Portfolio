@@ -3,6 +3,11 @@
   "title": "ملبي",
   "shortDescription": "تطبيق يرشد الحاج أو المعتمر\nلأداء مناسكه خطوة بخطوة",
   "longDescription": "تطبيق يساعد الحاج أو المعتمر في أداء مناسكه بكل يسر و سهولة ، يركز في تسهيل تجربة المستخدم ، المتابعة بخريطة تفاعلية بسيطة و توفير جميع المستلزمات من أذكار و قرآن في مكان واحد.",
+  "titleEn": "Mulabbi",
+  "longDescriptionEn": "An app that helps pilgrims perform their Hajj or Umrah rituals with ease. It focuses on simplifying the user experience through an interactive tracking map and providing all necessities — adhkar and Quran — in one place.",
+  "shortDescriptionEn": "An app that guides pilgrims\nthrough their rituals step by step",
+  "metadataEn": ["Platform: Mobile App"],
+  "tagsEn": ["Team project", "Islamic", "Guidance"],
   "technologies": [
     { "name": "flutter", "icon": "/assets/flutter.svg" },
     { "name": "supabase", "icon": "/assets/Supabase.svg" }
@@ -10,40 +15,48 @@
   "metadata": ["المنصة: تطبيق جوال "],
   "tags": ["عمل جماعي", "إسلامي", "إرشادي"],
   "bannar": "/images/mulabbi-banner.svg",
-  "url": "/media/mulabbi",
+  "url": "media/mulabbi",
   "imagesUrl": [
     {
       "name": "الدخول",
+      "nameEn": "Login",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-1.png?updatedAt=1754202689501"
     },
     {
       "name": "التتبع",
+      "nameEn": "Tracking",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-2.png?updatedAt=1754202562350"
     },
     {
       "name": "الرئيسية",
+      "nameEn": "Home",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-3.png?updatedAt=1754202625061"
     },
     {
       "name": "زاد",
+      "nameEn": "Zad",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-4.png?updatedAt=1754202689714"
     },
     {
       "name": "القبلة",
+      "nameEn": "Qibla",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-5.png?updatedAt=1754202689637"
     }
   ],
   "videosUrls": [
     {
       "name": "الصفحة الرئيسية",
+      "nameEn": "Home",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-video-1.mov"
     },
     {
       "name": "الخريطة",
+      "nameEn": "Map",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-video-2.mov"
     },
     {
       "name": "صفحة زاد",
+      "nameEn": "Zad Page",
       "url": "https://ik.imagekit.io/zyadfallatah/mulabbi-video-3.mov"
     }
   ]

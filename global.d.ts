@@ -6,8 +6,18 @@ interface Project {
   metadata: string[];
   bannar: string;
   tags?: string[];
+  titleEn?: string;
+  shortDescriptionEn?: string;
+  longDescriptionEn?: string;
+  metadataEn?: string[];
+  tagsEn?: string[];
   linkName?: string;
+  compact?: boolean;
+  highlight?: boolean;
+  hideCode?: boolean;
+  codeUrl?: string;
+  order?: number;
   url?: string;
-  imagesUrl?: { name: string; url: string }[];
-  videosUrls?: { name: string; url: string }[];
+  imagesUrl?: { name: string; nameEn?: string; url: string }[];
+  videosUrls?: { name: string; nameEn?: string; url: string }[];
 }

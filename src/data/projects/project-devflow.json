@@ -4,6 +4,11 @@
   "shortDescription": "موقع تواصل و أسئلة \nبين المطورين",
   "longDescription": "هو تطبيق يسمح للمطورين بالتواصل و تبادل الخبرات و المعلومات ، إضافةً إلى عرض الوظائف ، دعم الإجابات بالذكاء الاصطناعي.",
   "tags": ["عمل فردي", "تواصل"],
+  "titleEn": "DevFlow",
+  "longDescriptionEn": "A full-stack Q&A platform built during an intensive NextJS course, integrating AI-powered answers, OAuth authentication, job search, and a robust logging and error-handling system.",
+  "shortDescriptionEn": "A Q&A and community platform\nfor developers",
+  "metadataEn": ["Platform: Web App"],
+  "tagsEn": ["Solo project", "Social"],
   "technologies": [
     { "name": "React", "icon": "/assets/react.svg" },
     { "name": "Tailwind", "icon": "/assets/tailwindcss.svg" },
@@ -11,5 +16,6 @@
   ],
   "metadata": ["المنصة: تطبيق ويب "],
   "bannar": "/images/devflow-banner.svg",
-  "url": "https://devflow-six-tawny.vercel.app/"
+  "url": "https://devflow.zyadfallatah.com",
+  "compact": true
 }

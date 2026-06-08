@@ -5,7 +5,7 @@ import { cn } from '../utils/utils';
 
 interface Props {
   text: string
-  variant: "primary" | "light" | "dark" | "outline" | "disabled"
+  variant: "primary" | "light" | "dark" | "outline" | "disabled" | "accent"
   href?: string
   languageLink?: "ar" | "en"
   icon?: string
@@ -35,15 +35,18 @@ switch (variant) {
   case "disabled":
     buttonStyles = `bg-primary-darker text-light-darker shadow shadow-primary-lighter`
     break;
+  case "accent":
+    buttonStyles = `text-light bg-linear-180 from-accent-lighter to-accent border-accent-darker
+    shadow shadow-accent-darker hover:from-accent hover:to-accent-darker hover:border-accent`
+    break;
   default:
     break;
 }
 
 const link = href &&  href
-// getRelativeLocaleUrl(languageLink ?? "ar", href)
 ---
 {href ? 
-<a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md", className, buttonStyles)}>
+<a href={link} class={cn("flex justify-center font-semibold gap-2 cursor-pointer rounded-md duration-300 w-fit", className, buttonStyles)}>
   <button class={"cursor-pointer"}>
     {text}
   </button>

@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import LayoutEn from "../../../../layouts/LayoutEn.astro";
+import Button from "../../../../components/Button.astro";
+import ProjectMeta from "../../../../components/projectDetail/ProjectMeta.astro";
+import ProjectHighlight from "../../../../components/projectDetail/ProjectHighlight.astro";
+import { getCurrentProject, getCurrentProjectMarkdown } from "../../../../utils/utils";
+import Background from "../../../../components/Background.astro";
+
+export const getStaticPaths = (() => {
+  return [
+    { params: { name: "mulabbi" } },
+    { params: { name: "devflow" } },
+    { params: { name: "sanad" } },
+    { params: { name: "mawsem" } },
+  ];
+}) satisfies GetStaticPaths;
+
+const { name } = Astro.params;
+const currentProject = await getCurrentProject(name);
+const markdown = await getCurrentProjectMarkdown(name, 'en');
+---
+<LayoutEn title={name}>
+  <Background variant="subtle">
+  <div class="landing min-h-svh items-start justify-start pt-12">
+    <div class="flex flex-col items-center sm:items-start max-w-[1200px] w-full lg:px-10 mx-auto">
+      <Button text="Back" variant="light" href="/en/#projects" className="max-sm:text-[.75rem] p-2 px-4 md:p-3 md:px-5 mr-auto" icon="/assets/back-arrow.svg"/>
+      <h1 class="light-text-gradient text-4xl md:text-6xl font-bold pb-5 pt-2 w-fit mb-5">{currentProject?.titleEn ?? currentProject?.title}</h1>
+      <div class="flex flex-col lg:flex-row gap-5 lg:gap-8 w-full">
+        <ProjectMeta project={currentProject!} lang="en" />
+        <ProjectHighlight project={currentProject!} markdown={markdown!} lang="en" />
+      </div>
+    </div>
+  </div>
+  </Background>
+</LayoutEn>

@@ -3,15 +3,45 @@ export const hardSkills: { name: string; icon: string }[] = [
   { name: "Tailwind", icon: "/assets/tailwindcss.svg" },
   { name: "Postgres", icon: "/assets/postgres.svg" },
   { name: "Typescript", icon: "/assets/ts-logo.svg" },
-  { name: "Flutter", icon: "/assets/flutter.svg" },
+  { name: "Docker", icon: "/assets/docker.svg" },
+  { name: "Node", icon: "/assets/node.svg" },
+  { name: "Redis", icon: "/assets/redis.svg" },
+  { name: "Socket.io", icon: "/assets/socketio.svg" },
+  { name: "MongoDB", icon: "/assets/Mongodb.svg" },
 ];
 
-export const softSkills: { name: string; icon?: string }[] = [
-  { name: "إدارة الوقت" },
-  { name: "المرونة" },
-  { name: "حل المشاكل" },
-  { name: "الاهتمام بالتفاصيل" },
-  { name: "العمل مع فريق" },
+export const skillCategories: {
+  labelAr: string;
+  labelEn: string;
+  skills: { name: string; icon: string }[];
+}[] = [
+  {
+    labelAr: "الواجهة الأمامية",
+    labelEn: "Frontend",
+    skills: [
+      { name: "React", icon: "/assets/react.svg" },
+      { name: "Tailwind", icon: "/assets/tailwindcss.svg" },
+      { name: "Typescript", icon: "/assets/ts-logo.svg" },
+    ],
+  },
+  {
+    labelAr: "الخادم",
+    labelEn: "Backend",
+    skills: [
+      { name: "Node", icon: "/assets/node.svg" },
+      { name: "Postgres", icon: "/assets/postgres.svg" },
+      { name: "MongoDB", icon: "/assets/Mongodb.svg" },
+      { name: "Redis", icon: "/assets/redis.svg" },
+      { name: "Socket.io", icon: "/assets/socketio.svg" },
+    ],
+  },
+  {
+    labelAr: "البنية التحتية",
+    labelEn: "DevOps",
+    skills: [
+      { name: "Docker", icon: "/assets/docker.svg" },
+    ],
+  },
 ];
 
 export const experinces: {
@@ -24,9 +54,6 @@ export const experinces: {
     company: "جمعية عون التقنية",
     durationInMonths: 4,
     type: "intern",
-    description: `
-      تطوير تطبيقات الجوال باستخدام flutter و العمل على التصاميم و تحويلها لتطبيقات فعالة
-      ، التعامل مع قواعد البيانات و ربطها مع الواجهات.
-      `,
+    description: `٦٠٧ ساعة عمل عملي تغطي دورة تطوير البرمجيات كاملةً — تحويل تصاميم Figma إلى واجهات إنتاجية، وبناء واجهة API لمنصة إدارة المحتوى، وتسليم تطبيق للمستخدمين الفعليين.`,
   },
 ];

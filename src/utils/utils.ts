@@ -17,10 +17,11 @@ export const getCurrentProject = async (name: string) => {
   return currentProject?.data || null;
 };
 
-export const getCurrentProjectMarkdown = async (name: string) => {
+export const getCurrentProjectMarkdown = async (name: string, lang: 'ar' | 'en' = 'ar') => {
   const markdowns = await getCollection("projectExperince");
+  const id = lang === 'en' ? `${name}-en` : name;
   const currentProjectMarkdown = markdowns
-    .filter(({ id }) => id === name)
+    .filter(({ id: entryId }) => entryId === id)
     .at(0);
 
   return currentProjectMarkdown;

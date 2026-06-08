@@ -1,0 +1,88 @@
+---
+interface Props {
+  lang?: "ar" | "en";
+}
+
+const { lang = "ar" } = Astro.props;
+const isEn = lang === "en";
+
+const stats = isEn
+  ? [
+      { value: "607", label: "training hrs" },
+      { value: "4", label: "months" },
+    ]
+  : [
+      { value: "٦٠٧", label: "ساعة تدريب" },
+      { value: "٤", label: "شهور" },
+    ];
+
+const highlights = isEn
+  ? [
+      "Built Mulabbi, a Flutter pilgrim-guidance app covering 4 nusuk types (Hajj ×3 + Umrah) with real-time tracking maps, Qibla compass, prayer times, Athkar, and Quran navigation",
+      "Wrote comprehensive technical documentation covering the app and CMS API endpoints",
+      "Contributed to a shared codebase with Git/GitHub version control and merge conflict resolution",
+      "Produced SRS updates including use case and activity diagrams for a real company CMS (Awontech's own system)",
+    ]
+  : [
+      "بناء تطبيق Mulabbi، تطبيق إرشاد الحجاج بـ Flutter يشمل 4 أنواع نُسُك (ثلاث الحج + عمرة) مع خرائط تتبع فورية وبوصلة قبلة وأوقات الصلاة والأذكار والتنقل في القرآن الكريم",
+      "كتابة وثائق تقنية شاملة تغطي التطبيق ونقاط API لنظام إدارة المحتوى",
+      "المساهمة في قاعدة كود مشتركة بإدارة إصدارات Git/GitHub و حل مشاكل التعارض",
+      "تحديث SRS بمخططات usecase و activity لنظام CMS حقيقي (النظام الداخلي لـ Awontech)",
+    ];
+
+const cardClass = "relative border border-[rgba(101,112,128,0.28)] bg-[linear-gradient(180deg,rgba(255,255,255,0.75)_0%,rgba(244,245,247,0.88)_100%)] shadow-[0_4px_16px_rgba(85,99,117,0.14),inset_0_0_0_1px_rgba(255,255,255,0.5)] backdrop-saturate-115 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(101,112,128,0.52)] hover:shadow-[0_8px_24px_rgba(85,99,117,0.24)] dark:border-[rgba(127,142,163,0.28)] dark:bg-[linear-gradient(180deg,rgba(35,48,65,0.76)_0%,rgba(17,24,35,0.94)_100%)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.32)] dark:hover:border-[rgba(127,142,163,0.5)] dark:hover:shadow-[0_12px_28px_rgba(0,0,0,0.45)]";
+---
+
+<div class="landing justify-start md:items-start pb-16 pt-4" id="experience">
+  <div class="w-full lg:max-w-[1440px] mx-auto">
+    <h2 class="light-text-gradient max-sm:text-5xl text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">
+      {isEn ? 'Experience' : 'الخبرة'}
+    </h2>
+
+    <div class={`exp-card opacity-0 w-full max-w-[720px] mx-auto px-6 py-8 md:px-10 md:py-10 rounded-xl ${cardClass}`}>
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <h3 class="light-text-gradient font-bold text-2xl md:text-3xl">
+            {isEn ? 'Awon Tech Association' : 'جمعية عون التقنية'}
+          </h3>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full border border-primary-lighter text-primary dark:border-primary-lighter dark:text-primary-lighter">
+            {isEn ? 'Intern' : 'تدريب'}
+          </span>
+        </div>
+        <p class="text-sm text-primary dark:text-primary-lighter">
+          {isEn ? 'Mar – Jul 2025' : 'مارس – يوليو ٢٠٢٥'}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4 mb-8">
+        {stats.map((stat) => (
+          <div class="flex-1 min-w-[100px] rounded-lg border border-[rgba(101,112,128,0.22)] bg-[rgba(255,255,255,0.5)] dark:bg-[rgba(127,142,163,0.07)] px-4 py-3 text-center">
+            <p class="light-text-gradient text-3xl font-bold">{stat.value}</p>
+            <p class="text-xs text-primary dark:text-primary-lighter mt-1">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <ul class="space-y-3">
+        {highlights.map((point) => (
+          <li class="flex items-start gap-3">
+            <span class="text-primary dark:text-primary-lighter text-base leading-none mt-1 shrink-0">▸</span>
+            <p class="text-dark-lighter dark:text-light text-sm md:text-base">{point}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { animate, inView } from "motion";
+
+  const card = document.querySelector<HTMLElement>(".exp-card");
+  if (card) {
+    inView(card, () => {
+      animate(card, { opacity: 1, y: [24, 0] }, { duration: 0.5 });
+      return () => animate(card, { opacity: 0, y: 24 });
+    });
+  }
+</script>

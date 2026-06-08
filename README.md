@@ -33,12 +33,15 @@
 - Fill the rest of the content (currently by hand until the CMS is ready)
 - [x] Fill the metadata & SEO
 
+## V2.1
+
+- [x] Adding Animation
+- [x] Fixing bugs & Adjustments
+- [ ] Implement Light mode
+
 ## Future
 
-- [ ] CMS (external or custom) to manage content
-- [ ] Connect to mongodb to update website when building
-- [ ] Implement Light mode (This going to be delayed)
-- [ ] Implement limiter (The concept will be changed)
 - [ ] Implement english version
+- [ ] Implement limiter (The concept will be changed)
 
 ## Tech Stack

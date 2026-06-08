@@ -1,22 +1,89 @@
 ---
 import { getCollection } from "astro:content"
 import Button from "../Button.astro"
+import CompactProject from "../CompactProject.astro"
+import HighlightProject from "../HighlightProject.astro"
 import Project from "../Project.astro"
+
+interface Props {
+  lang?: "ar" | "en"
+}
+
+const { lang = "ar" } = Astro.props;
 
 const projects = await getCollection('projects').then((collection) => {
   return collection.reverse();
 });
+const highlightProject = projects.find(({ data }) => data.highlight);
+const featuredProjects = projects
+  .filter(({ data }) => !data.compact && !data.highlight)
+  .sort((a, b) => (b.data.order ?? 0) - (a.data.order ?? 0));
+const compactProjects = projects
+  .filter(({ data }) => data.compact)
+  .slice(0, 3);
 ---
 
 <div class="landing-reverse justify-start" id="projects">
-  <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10">أعمالي</h2>
-  <main class="relative space-y-20 lg:space-y-[12rem]">
-    <span class="hidden lg:block absolute z-0 left-[51.5%] w-2 min-h-[600px] bg-linear-180 from-light-lighter to-[#9DA7B3] rounded-md"></span>
-    {projects.map(({data: {linkName, ...rest}}, index) => (
-      <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? rest.title} project={rest} />
-    ))}
+  <h2 class="light-text-gradient max-sm:text-5xl text-6xl p-5 font-bold md:text-7xl my-10">{lang === 'en' ? 'My Work' : 'أعمالي'}</h2>
+  <main class="relative">
+    {highlightProject && (() => {
+      const { linkName, ...rest } = highlightProject.data;
+      const title = lang === 'en' ? (highlightProject.data.titleEn ?? highlightProject.data.title) : highlightProject.data.title;
+      const shortDescription = lang === 'en' ? (highlightProject.data.shortDescriptionEn ?? highlightProject.data.shortDescription) : highlightProject.data.shortDescription;
+      const metadata = lang === 'en' ? (highlightProject.data.metadataEn ?? highlightProject.data.metadata) : highlightProject.data.metadata;
+      return <HighlightProject linkName={linkName ?? title} project={{...rest, title, shortDescription, metadata}} lang={lang} />;
+    })()}
 
-<Button text="قريباً" variant="disabled" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/>
+    {featuredProjects.map(({data}, index) => {
+      const { linkName, ...rest } = data;
+      const title = lang === 'en' ? (data.titleEn ?? data.title) : data.title;
+      const shortDescription = lang === 'en' ? (data.shortDescriptionEn ?? data.shortDescription) : data.shortDescription;
+      const metadata = lang === 'en' ? (data.metadataEn ?? data.metadata) : data.metadata;
+      return <Project isMirroredToRight={index % 2 === 1} linkName={linkName ?? title} project={{...rest, title, shortDescription, metadata}} lang={lang} />;
+    })}
+
+    {compactProjects.length > 0 && (
+      <section class="mt-10 rounded-2xl border border-[rgba(101,112,128,0.22)] bg-[rgba(244,245,247,0.38)] p-4 md:p-6 dark:border-[rgba(92,203,160,0.2)] dark:bg-[rgba(14,21,31,0.45)]">
+        <h3 class="light-text-gradient mb-5 text-3xl font-bold md:text-4xl">
+          {lang === "en" ? "More Projects" : "مشاريع إضافية"}
+        </h3>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {compactProjects.map(({ data }) => {
+            const title = lang === "en" ? (data.titleEn ?? data.title) : data.title;
+            const shortDescription = lang === "en" ? (data.shortDescriptionEn ?? data.shortDescription) : data.shortDescription;
+            const metadata = lang === "en" ? (data.metadataEn ?? data.metadata) : data.metadata;
+            return <CompactProject project={{ ...data, title, shortDescription, metadata }} lang={lang} />;
+          })}
+        </div>
+      </section>
+    )}
+
+  <!-- <Button text={lang === "en" ? "View all projects" : "عرض كل المشاريع"} href={lang === "en" ? "/en/projects/allProject" : "/projects/allProject"} variant="light" className="relative py-3 px-8 mx-auto z-10 block lg:translate-x-4.5"/> -->
 </main>
 
 </div>
+
+<script>
+  import { animate, inView } from "motion";
+
+  const highlightProject = document.querySelector(".highlight-project");
+  const projects = document.querySelectorAll(".project");
+  const compactProjects = document.querySelectorAll(".compact-project");
+
+  if (highlightProject) {
+    inView(highlightProject, (el) => {
+      animate(el, { opacity: 1, scale: [0.97, 1], y: [20, 0] }, { duration: 0.7 });
+      return () => animate(el, { opacity: 0.95 });
+    });
+  }
+
+  inView(projects, (project) => {
+    animate(project, { opacity: 1, y: [20, 0] }, { duration: 0.6 });
+    return () => animate(project, { opacity: 0.9, y: 20 });
+  })
+
+  inView(compactProjects, (item) => {
+    animate(item, { opacity: 1, y: [20, 0] }, { duration: .45 });
+    return () => animate(item, { opacity: .92, y: 4 });
+  })
+</script>

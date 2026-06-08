@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import CompactProject from "./CompactProject.astro";
+
+interface Props {
+  lang?: "ar" | "en";
+}
+
+const { lang = "ar" } = Astro.props;
+
+const projects = await getCollection("projects").then((collection) => collection.reverse());
+---
+
+<section class="w-full max-w-[1200px] mx-auto px-4 md:px-6">
+  <h1 class="light-text-gradient text-4xl md:text-6xl font-bold mb-3 py-2">
+    {lang === "en" ? "All Projects" : "كل المشاريع"}
+  </h1>
+  <p class="text-dark-lighter dark:text-light text-base md:text-lg mb-8">
+    {lang === "en" ? "A full list of additional projects." : "قائمة كاملة للمشاريع الإضافية."}
+  </p>
+
+  {projects.length === 0 ? (
+    <p class="text-dark-lighter dark:text-light/80">
+      {lang === "en" ? "No projects yet." : "لا توجد مشاريع حالياً."}
+    </p>
+  ) : (
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {projects.map(({ data }) => {
+        const title = lang === "en" ? (data.titleEn ?? data.title) : data.title;
+        const shortDescription = lang === "en" ? (data.shortDescriptionEn ?? data.shortDescription) : data.shortDescription;
+        const metadata = lang === "en" ? (data.metadataEn ?? data.metadata) : data.metadata;
+        return <CompactProject project={{ ...data, title, shortDescription, metadata }} lang={lang} />;
+      })}
+    </div>
+  )}
+</section>
+
+<script>
+  import { animate, inView } from "motion";
+  const compactProjects = document.querySelectorAll(".compact-project");
+
+  inView(compactProjects, (item) => {
+    animate(item, { opacity: 1, y: [20, 0] }, { duration: 0.45 });
+    return () => animate(item, { opacity: 0.92, y: 4 });
+  });
+</script>
