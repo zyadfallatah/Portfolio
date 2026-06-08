@@ -11,12 +11,12 @@ interface Props {
 }
 
 const {isMirroredToRight,linkName , project, lang = "ar"} = Astro.props;
-const {title, shortDescription, metadata, bannar, technologies, url} = project;
+const {title, shortDescription, metadata, bannar, technologies, url, hideCode, codeUrl} = project;
 // left-[41.5%] top-[33%]
 ---
 
-<div class={cn("flex flex-col items-center justify-center gap-10 mb-10 lg:mb-20 opacity-0 project", isMirroredToRight ? "md:flex-row-reverse translate-x-[-50px]" : "md:flex-row translate-x-[50px] right")}>
+<div class={cn("flex flex-col items-center justify-center gap-10 mb-10 lg:mb-20 opacity-0 project", isMirroredToRight ? "md:flex-row-reverse" : "md:flex-row")}>
   <ProjectData title={title} shortDescription={shortDescription} technologies={technologies}/>
-  <ProjectBannar metadata={metadata} bannar={bannar} linkName={linkName} url={url} lang={lang}/ >
+  <ProjectBannar metadata={metadata} bannar={bannar} linkName={linkName} url={url} hideCode={hideCode} codeUrl={codeUrl} lang={lang}/ >
 </div>
 

@@ -11,7 +11,7 @@ const { lang = "ar" } = Astro.props;
 const t = lang === 'en' ? en : null;
 ---
 
-<div class="landing min-h-svh">
+<div class="landing min-h-svh" id="welcome">
 	<span class="absolute top-10 right-16 z-10 cursor-pointer" id="theme">
 		<img src="/assets/sun.svg" alt="Dark mode" class="hidden dark:block max-w-10 lg:max-w-14">
 		<img src="/assets/moon.svg" alt="Light mode" class="dark:hidden max-w-10 lg:max-w-14">
@@ -19,8 +19,8 @@ const t = lang === 'en' ? en : null;
 	<a href={lang === 'ar' ? '/en/' : '/'} onclick={`localStorage.setItem('lang', '${lang === 'ar' ? 'en' : 'ar'}')`} class="absolute top-10 left-16 z-10 text-dark-lighter dark:text-light font-semibold text-xl">
 		{lang === 'ar' ? 'EN' : 'AR'}
 	</a>
-	<img src="/assets/logo.svg" alt="logo" class="max-w-[230px] mb-10 opacity-0 logo">
-			<h1 class="font-normal text-6xl md:text-7xl text-dark-lighter dark:text-light md:mt-10 translate-x-[-100px] opacity-0 heading">
+	<img src="/assets/logo.svg" alt="logo" class="max-w-[150px] lg:max-w-[230px] mb-10 opacity-0 logo">
+			<h1 class="font-normal max-sm:text-5xl text-6xl md:text-7xl text-dark-lighter dark:text-light md:mt-10 translate-x-[-100px] opacity-0 heading">
 				{t ? t.greeting : 'أنا'}
 				<span class="light-text-gradient font-bold">{t ? t.name : 'زياد'}</span>
 			</h1>

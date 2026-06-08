@@ -1,10 +1,10 @@
 ---
 import Button from "../Button.astro";
-interface Props extends Pick<Project, "metadata" | "bannar" | "linkName" | "url" > {
+interface Props extends Pick<Project, "metadata" | "bannar" | "linkName" | "url" | "hideCode" | "codeUrl"> {
   lang?: "ar" | "en"
 }
 
-const {bannar, metadata, linkName, url, lang = "ar"} = Astro.props;
+const {bannar, metadata, linkName, url, hideCode, codeUrl, lang = "ar"} = Astro.props;
 ---
 
 <div class="relative flex flex-col-reverse lg:flex-row justify-between gap-2 lg:w-[420px] bg-linear-90 from-dark-lighter dark:from-light-lighter to-primary-darker dark:to-primary-lighter rounded-md p-2">
@@ -17,7 +17,7 @@ const {bannar, metadata, linkName, url, lang = "ar"} = Astro.props;
 
     <div class="flex gap-2 pb-2">
       <Button text={lang === 'en' ? 'Preview' : 'معاينة'} variant="accent" className=" flex-1 p-1.5" href={url}/>
-      <Button text={lang === 'en' ? 'Code' : 'الكود'} variant="light" className="flex-1 p-1.5" href={`https://github.com/zyadfallatah/${linkName}`}/>
+      {!hideCode && <Button text={lang === 'en' ? 'Code' : 'الكود'} variant="light" className="flex-1 p-1.5" href={codeUrl ?? `https://github.com/zyadfallatah/${linkName}`}/>}
     </div>
   </div>
     <div class="absolute -top-4 -right-4">

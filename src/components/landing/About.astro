@@ -1,9 +1,7 @@
 ---
-import { experinces, hardSkills, softSkills } from "../../constants"
 import { en } from "../../i18n/en"
 import { cn } from "../../utils/utils"
 import Highlight from "../Highlight.astro"
-import SkillGroup from "../skill-group.astro"
 import Footer from "./Footer.astro"
 
 interface Props {
@@ -12,44 +10,81 @@ interface Props {
 
 const { lang = "ar" } = Astro.props;
 const t = lang === 'en' ? en : null;
-const currentExperiences = t ? t.experiences : experinces;
-const currentSoftSkills = t ? t.softSkills : softSkills;
-const aboutCardClass = "relative border border-[rgba(74,90,109,0.22)] bg-[linear-gradient(120deg,rgba(74,90,109,0.02)_35%,rgba(255,255,255,0.30)_100%)] shadow-[0_10px_28px_rgba(80,96,114,0.16),inset_0_0_0_1px_rgba(255,255,255,0.2)] backdrop-saturate-115 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(61,158,122,0.42)] hover:shadow-[0_16px_34px_rgba(61,158,122,0.22),inset_0_0_0_1px_rgba(61,158,122,0.24)] dark:border-[rgba(92,203,160,0.24)] dark:bg-[linear-gradient(120deg,rgba(61,158,122,0.26),rgba(20,30,44,0.88)_45%,rgba(14,21,31,0.96)_100%)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.42),inset_0_0_0_1px_rgba(92,203,160,0.12)] dark:hover:border-[rgba(92,203,160,0.46)] dark:hover:shadow-[0_18px_38px_rgba(40,177,130,0.26),inset_0_0_0_1px_rgba(92,203,160,0.28)]";
+const aboutCardClass = "relative border border-[rgba(101,112,128,0.28)] bg-[linear-gradient(180deg,rgba(255,255,255,0.75)_0%,rgba(244,245,247,0.88)_100%)] shadow-[0_4px_16px_rgba(85,99,117,0.14),inset_0_0_0_1px_rgba(255,255,255,0.5)] backdrop-saturate-115 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(101,112,128,0.52)] hover:shadow-[0_8px_24px_rgba(85,99,117,0.24)] dark:border-[rgba(127,142,163,0.28)] dark:bg-[linear-gradient(180deg,rgba(35,48,65,0.76)_0%,rgba(17,24,35,0.94)_100%)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.32)] dark:hover:border-[rgba(127,142,163,0.5)] dark:hover:shadow-[0_12px_28px_rgba(0,0,0,0.45)]";
 ---
-<div class="landing min-h-[90svh] justify-start md:items-start max-sm:pt-10 pb-10" id="about">
+<div class=" justify-start md:items-start max-sm:pt-10 pb-10 mb-6 px-8" id="about">
   <div class="w-full lg:max-w-[1440px] mx-auto">
-    <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">{t ? t.aboutHeading : 'عني'}</h2>
+    <h2 class="light-text-gradient max-sm:text-5xl text-6xl p-5 font-bold md:text-7xl my-10 w-fit mx-auto text-center">{t ? t.aboutHeading : 'عني'}</h2>
 
-    <div class="lg:flex gap-20 justify-center">
-      <main class="space-y-5 about-item translate-x-[30px] opacity-0">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center">
+      <main class="space-y-5 about-item opacity-0">
         <Highlight title={t ? t.bioTitle : 'نبذة'} contentType="Default" variant="special" limitText={true} className={aboutCardClass}>
-          {t ? t.bioText : <>اسمي <span class="light-text-gradient">زياد</span> ، طالب علوم حاسب من جامعة أم القرى</>}
+          {t ? (
+            <>I'm Ziyad — a <span class="light-text-gradient font-bold">Full-Stack</span> developer from Umm Al-Qura University.</>
+          ) : (
+            <>أنا زياد — مطور <span class="light-text-gradient font-bold">Full-Stack</span> من جامعة أم القرى.</>
+          )}
         </Highlight>
         <Highlight title={t ? t.descTitle : 'وصف'} contentType="Default" limitText={true} className={aboutCardClass}>
-          {t ? t.descText : 'أقوم بتصميم و تطوير حلول برمجية تعمل على تحسين حياة الأفراد و المجتمعات، مع التركيز على الجودة العالية و الأداء المتميز، و دائماً ما أتبع أحدث المعايير التقنية و أفضل الممارسات'}
-        </Highlight>
-        <Highlight title={t ? t.experienceTitle : 'الخبرة'} contentType="Custom" limitText={true} isScrollable={true} className={aboutCardClass}>
-          {currentExperiences.map((experince) => (
-            <>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-1 sm:gap-2">
-                  <img src="/assets/d-shape.svg" alt="D Shape" class={cn("max-sm:max-w-4", lang === "en" && "rotate-y-180")}>
-                  <h3 class="light-text-gradient text-[.9rem] sm:text-xl">{experince.company}</h3>
-                </div>
-                <p class="text-[.9rem] sm:text-xl text-dark-lighter dark:text-light">{experince.durationInMonths} {t ? t.months : 'شهور'} - {experince.type === "intern" ? (t ? t.internLabel : 'تدريب') : (t ? 'N/A' : 'غير محدد')}</p>
-              </div>
-              <span class="flex items-start mr-1.5 sm:mr-3 gap-2">
-                <img src="/assets/attach-to-d.svg" alt="design" class={lang === "en" ? "rotate-y-180 ml-3.5" : ""}>
-                <p class="text-dark-lighter dark:text-light text-[1rem] tracking-normal pt-1.5">{experince.description}</p>
-              </span>
-            </>
-          ))}
+          {t ? <>A Full-Stack developer who builds from the problem, not the technology. The last thing I built proved that meaningful tools work effectively — "<a href="/en/projects/sanad" class="sanad-text-gradient underline decoration-amber-400 decoration-2 font-semibold">even if used different than intended</a>."</> : <>مطور Full-Stack أبني من المشكلة، و ليس من التقنية. آخر ما بنيت أثبت أن الأدوات ذات المغزى تعمل بكفاءة — "<a href="/projects/sanad" class="sanad-text-gradient underline decoration-amber-400 decoration-2 font-semibold">حتى لو استخدمت لغير غرضها الأصلي</a>."</>}
         </Highlight>
       </main>
-      <aside class="flex flex-col items-center about-item translate-x-[-30px] opacity-0">
-        <h3 class="light-text-gradient w-fit font-medium text-3xl md:text-5xl p-1 max-lg:mt-4">{t ? t.skillsHeading : 'المهارات'}</h3>
-        <SkillGroup lang={lang} text={t ? t.hardSkillsLabel : 'التقنية'} skillSets={hardSkills} />
-        <SkillGroup lang={lang} text={t ? t.softSkillsLabel : 'الناعمة'} skillSets={currentSoftSkills} />
+      <aside class="flex flex-col gap-5 w-full max-w-[600px] lg:max-w-[460px] about-item opacity-0">
+        <div class={cn("flex items-start gap-4 px-4 py-5 md:p-6 rounded-md", aboutCardClass)}>
+          <div class="text-primary dark:text-primary-lighter mt-1 shrink-0">
+            <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="light-text-gradient w-fit font-medium text-xl md:text-2xl mb-1">
+              {t ? 'Web Applications' : 'تطبيقات الويب'}
+            </h3>
+            <p class="text-dark-lighter dark:text-light text-sm md:text-base">
+              {t ? 'From idea to live product' : 'من الفكرة إلى المنتج الحي'}
+            </p>
+          </div>
+        </div>
+
+        <div class={cn("flex items-start gap-4 px-4 py-5 md:p-6 rounded-md", aboutCardClass)}>
+          <div class="text-primary dark:text-primary-lighter mt-1 shrink-0">
+            <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="8" rx="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2"/>
+              <line x1="6" y1="6" x2="6.01" y2="6"/>
+              <line x1="6" y1="18" x2="6.01" y2="18"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="light-text-gradient w-fit font-medium text-xl md:text-2xl mb-1">
+              {t ? 'Backend Systems' : 'الأنظمة الخلفية'}
+            </h3>
+            <p class="text-dark-lighter dark:text-light text-sm md:text-base">
+              {t ? 'APIs, databases & infrastructure' : 'APIs، قواعد بيانات، بنية تحتية'}
+            </p>
+          </div>
+        </div>
+
+        <div class={cn("flex items-start gap-4 px-4 py-5 md:p-6 rounded-md", aboutCardClass)}>
+          <div class="text-primary dark:text-primary-lighter mt-1 shrink-0">
+            <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="light-text-gradient w-fit font-medium text-xl md:text-2xl mb-1">
+              {t ? 'Real-time Systems' : 'الأنظمة اللحظية'}
+            </h3>
+            <p class="text-dark-lighter dark:text-light text-sm md:text-base">
+              {t ? 'Sessions, live sync & collaborative features' : 'جلسات، مزامنة فورية، وميزات تعاونية'}
+            </p>
+          </div>
+        </div>
+
       </aside>
 
     </div>
@@ -58,18 +93,12 @@ const aboutCardClass = "relative border border-[rgba(74,90,109,0.22)] bg-[linear
 <Footer />
 
 <script>
-  import { animate, inView, stagger } from "motion";
+  import { animate, inView } from "motion";
 
   const aboutItems = document.querySelectorAll(".about-item");
 
   inView(aboutItems, (item) => {
-    const isSkillsColumn = item.tagName.toLowerCase() === "aside";
-    animate(
-      item,
-      { opacity: 1, x: isSkillsColumn ? 30 : -30, position: "relative" },
-      { duration: 0.6, delay: stagger(0.2, { startDelay: 0.2 }) }
-    );
-
-    return () => animate(item, { opacity: 0, x: isSkillsColumn ? -30 : 30, position: "absolute" });
+    animate(item, { opacity: 1, y: [20, 0] }, { duration: 0.6 });
+    return () => animate(item, { opacity: 0, y: 20 });
   });
 </script>

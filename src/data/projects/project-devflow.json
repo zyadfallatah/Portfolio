@@ -16,5 +16,6 @@
   ],
   "metadata": ["المنصة: تطبيق ويب "],
   "bannar": "/images/devflow-banner.svg",
-  "url": "https://devflow.zyadfallatah.com"
+  "url": "https://devflow.zyadfallatah.com",
+  "compact": true
 }

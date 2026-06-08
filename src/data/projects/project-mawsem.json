@@ -1,0 +1,23 @@
+{
+  "linkName": "mawsem",
+  "title": "مَوسِم",
+  "titleEn": "Mawsem",
+  "shortDescription": "تنبؤ موسمي بالطلب للأسواق السعودية",
+  "shortDescriptionEn": "Seasonal demand forecasting for Saudi supermarkets",
+  "longDescription": "منصة تنبؤ بالطلب الموسمي لمديري المشتريات في الأسواق السعودية. مبنيّة حول التقويم الهجري — رمضان والعيد والحج. مخرج واحد واضح: الكمية الموصى بطلبها للموسم القادم، مبنيّةً على بيانات المبيعات الفعلية من العام الماضي.",
+  "longDescriptionEn": "A seasonal demand forecasting platform for procurement managers in Saudi supermarkets. Built around the Hijri calendar — Ramadan, Eid Al-Fitr, Eid Al-Adha, Hajj. One output: the recommended order quantity for the upcoming season, based on last year's actual sales data.",
+  "metadata": ["المنصة: تطبيق ويب"],
+  "metadataEn": ["Platform: Web App"],
+  "tags": ["مشروع التخرج", "فريق من ٤", "جامعة أم القرى"],
+  "tagsEn": ["Graduation Project", "Team of 4", "Umm Al-Qura University"],
+  "technologies": [
+    { "name": "React", "icon": "/assets/react.svg" },
+    { "name": "Laravel", "icon": "/assets/laravel.svg" },
+    { "name": "Python", "icon": "/assets/python.svg" },
+    { "name": "MariaDB", "icon": "/assets/mariadb.svg" }
+  ],
+  "bannar": "/images/mawsem-banner.svg",
+  "url": "https://mawsem.eny.sa",
+  "codeUrl": "https://github.com/orgs/Mawsem-graduation-project/repositories",
+  "order": 1
+}

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import Button from "../Button.astro"
 import CompactProject from "../CompactProject.astro"
+import HighlightProject from "../HighlightProject.astro"
 import Project from "../Project.astro"
 
 interface Props {
@@ -13,15 +14,26 @@ const { lang = "ar" } = Astro.props;
 const projects = await getCollection('projects').then((collection) => {
   return collection.reverse();
 });
-const featuredProjects = projects.filter(({ data }) => !data.compact);
+const highlightProject = projects.find(({ data }) => data.highlight);
+const featuredProjects = projects
+  .filter(({ data }) => !data.compact && !data.highlight)
+  .sort((a, b) => (b.data.order ?? 0) - (a.data.order ?? 0));
 const compactProjects = projects
   .filter(({ data }) => data.compact)
   .slice(0, 3);
 ---
 
 <div class="landing-reverse justify-start" id="projects">
-  <h2 class="light-text-gradient text-6xl p-5 font-bold md:text-7xl my-10">{lang === 'en' ? 'My Work' : 'أعمالي'}</h2>
+  <h2 class="light-text-gradient max-sm:text-5xl text-6xl p-5 font-bold md:text-7xl my-10">{lang === 'en' ? 'My Work' : 'أعمالي'}</h2>
   <main class="relative">
+    {highlightProject && (() => {
+      const { linkName, ...rest } = highlightProject.data;
+      const title = lang === 'en' ? (highlightProject.data.titleEn ?? highlightProject.data.title) : highlightProject.data.title;
+      const shortDescription = lang === 'en' ? (highlightProject.data.shortDescriptionEn ?? highlightProject.data.shortDescription) : highlightProject.data.shortDescription;
+      const metadata = lang === 'en' ? (highlightProject.data.metadataEn ?? highlightProject.data.metadata) : highlightProject.data.metadata;
+      return <HighlightProject linkName={linkName ?? title} project={{...rest, title, shortDescription, metadata}} lang={lang} />;
+    })()}
+
     {featuredProjects.map(({data}, index) => {
       const { linkName, ...rest } = data;
       const title = lang === 'en' ? (data.titleEn ?? data.title) : data.title;
@@ -52,16 +64,22 @@ const compactProjects = projects
 </div>
 
 <script>
-  import { animate, inView, stagger } from "motion";
+  import { animate, inView } from "motion";
 
+  const highlightProject = document.querySelector(".highlight-project");
   const projects = document.querySelectorAll(".project");
   const compactProjects = document.querySelectorAll(".compact-project");
 
-  inView(projects, (project) => {
-    const isMirroredToRight = project.classList.contains("right")
-    animate(project, {opacity: 1, x: isMirroredToRight ? -50 : 50, }, {duration: .6, delay: stagger(2, {startDelay: .2})})
+  if (highlightProject) {
+    inView(highlightProject, (el) => {
+      animate(el, { opacity: 1, scale: [0.97, 1], y: [20, 0] }, { duration: 0.7 });
+      return () => animate(el, { opacity: 0.95 });
+    });
+  }
 
-    return () => animate(project, {opacity: .9, x: isMirroredToRight ? -55 : 55});
+  inView(projects, (project) => {
+    animate(project, { opacity: 1, y: [20, 0] }, { duration: 0.6 });
+    return () => animate(project, { opacity: 0.9, y: 20 });
   })
 
   inView(compactProjects, (item) => {

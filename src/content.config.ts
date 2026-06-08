@@ -29,6 +29,10 @@ const projects = defineCollection({
     tagsEn: z.array(z.string()).optional(),
     linkName: z.string().optional(),
     compact: z.boolean().optional(),
+    highlight: z.boolean().optional(),
+    hideCode: z.boolean().optional(),
+    codeUrl: z.string().optional(),
+    order: z.number().optional(),
     content: z.string().optional(),
     url: z.string().optional(),
     imagesUrl: z

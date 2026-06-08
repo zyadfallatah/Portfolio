@@ -1,15 +1,21 @@
 ---
 import Background from '../components/Background.astro';
+import FloatingNav from '../components/FloatingNav.astro';
 import About from '../components/landing/About.astro';
+import Experience from '../components/landing/Experience.astro';
 import Projects from '../components/landing/Projects.astro';
+import Skills from '../components/landing/Skills.astro';
 import Welcome from '../components/landing/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
+	<FloatingNav />
 	<Background>
 		<Welcome />
 		<Projects />
+		<Experience />
+		<Skills />
 		<About />
 	</Background>
 </Layout>

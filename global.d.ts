@@ -13,6 +13,10 @@ interface Project {
   tagsEn?: string[];
   linkName?: string;
   compact?: boolean;
+  highlight?: boolean;
+  hideCode?: boolean;
+  codeUrl?: string;
+  order?: number;
   url?: string;
   imagesUrl?: { name: string; nameEn?: string; url: string }[];
   videosUrls?: { name: string; nameEn?: string; url: string }[];
