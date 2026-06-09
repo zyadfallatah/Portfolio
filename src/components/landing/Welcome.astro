@@ -13,8 +13,8 @@ const t = lang === 'en' ? en : null;
 
 <div class="landing min-h-svh" id="welcome">
 	<span class="absolute top-10 right-16 z-10 cursor-pointer" id="theme">
-		<img src="/assets/sun.svg" alt="Dark mode" class="hidden dark:block max-w-10 lg:max-w-14">
-		<img src="/assets/moon.svg" alt="Light mode" class="dark:hidden max-w-10 lg:max-w-14">
+		<img src="/assets/sun-logo.svg" alt="Dark mode" class="hidden dark:block max-w-10 lg:max-w-14">
+		<img src="/assets/moon-logo.svg" alt="Light mode" class="dark:hidden max-w-10 lg:max-w-14">
 	</span>
 	<a href={lang === 'ar' ? '/en/' : '/'} onclick={`localStorage.setItem('lang', '${lang === 'ar' ? 'en' : 'ar'}')`} class="absolute top-10 left-16 z-10 text-dark-lighter dark:text-light font-semibold text-xl">
 		{lang === 'ar' ? 'EN' : 'AR'}
