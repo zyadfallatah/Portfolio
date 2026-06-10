@@ -4,12 +4,6 @@ slug: mawsem-en
 
 # A demand forecasting tool for Saudi retail
 
-## One reason Sanad exists
-
-Our team submitted the first graduation project the right way — organized, complete, on time. Six months later, I couldn't find the work. The report was in Google Docs. The slides were in Canva. Browser autocomplete found the report before I did.
-
-> That was one of the main reasons [Sanad](/en/projects/sanad) exists.
-
 ## The Problem
 
 Three weeks of manual work before every season. A procurement manager needs to calculate how much to order for Ramadan, for Eid, for Hajj — product by product, using last year's Excel sheets and accumulated experience. General-purpose tools don't understand the Hijri calendar and don't know when Ramadan or Hajj starts. The result: empty shelves, stuck inventory, or excess ordering.
@@ -52,3 +46,9 @@ The rest (Laravel, Python, MariaDB) was built by the team.
 - What happens when the app is a bit slow? A lot of loading screens — just to keep the UX functional. Before adding them, I wasn't sure whether the app was working or not. Neither would a procurement manager.
 - There was a bug where the analysis was mapping everything to Muharram only. And for some reason the model assumed Ramadan always needs the highest order quantity — honestly a fair assumption 🙂
 - I did tweak a few things in Laravel here and there, but not much.
+
+## One reason Sanad exists
+
+Our team submitted the first graduation project the right way — organized, complete, on time. Six months later, I couldn't find the work. The report was in Google Docs. The slides were in Canva. Browser autocomplete found the report before I did.
+
+> That was a reason [Sanad](/en/projects/sanad) exists.
