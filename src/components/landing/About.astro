@@ -20,13 +20,13 @@ const aboutCardClass = "relative border border-[rgba(101,112,128,0.28)] bg-[line
       <main class="space-y-5 about-item opacity-0">
         <Highlight title={t ? t.bioTitle : 'نبذة'} contentType="Default" variant="special" limitText={true} className={aboutCardClass}>
           {t ? (
-            <>I'm Ziyad — a <span class="light-text-gradient font-bold">Full-Stack</span> developer from Umm Al-Qura University.</>
+            <>I'm Ziyad. I build <span class="light-text-gradient font-bold">backend systems</span> and think in problems before code.</>
           ) : (
-            <>أنا زياد — مطور <span class="light-text-gradient font-bold">Full-Stack</span> من جامعة أم القرى.</>
+            <>أنا زياد. أبني <span class="light-text-gradient font-bold">أنظمة خلفية</span> وأفكر في المشكلات قبل الكود.</>
           )}
         </Highlight>
         <Highlight title={t ? t.descTitle : 'وصف'} contentType="Default" limitText={true} className={aboutCardClass}>
-          {t ? <>A Full-Stack developer who builds from the problem, not the technology. The last thing I built proved that meaningful tools work effectively — "<a href="/en/projects/sanad" class="sanad-text-gradient underline decoration-amber-400 decoration-2 font-semibold">even if used different than intended</a>."</> : <>مطور Full-Stack أبني من المشكلة، و ليس من التقنية. آخر ما بنيت أثبت أن الأدوات ذات المغزى تعمل بكفاءة — "<a href="/projects/sanad" class="sanad-text-gradient underline decoration-amber-400 decoration-2 font-semibold">حتى لو استخدمت لغير غرضها الأصلي</a>."</>}
+          {t ? <>I don't start building until I understand why something needs to exist. That's slower, but it's the only way I trust what comes out the other side. Also how I work with people — being someone you can depend on more than being the loudest.</> : <>لا أبدأ في البناء حتى أفهم سبب وجود الشيء. قد يكون أبطأً، لكنه الطريقة الوحيدة التي أثق فيها بالمخرجات النهائية. أفضل أن أكون شخصاً يُعتمد عليه أكثر من أن أكون الأجهر.</>}
         </Highlight>
       </main>
       <aside class="flex flex-col gap-5 w-full max-w-[600px] lg:max-w-[460px] about-item opacity-0">
@@ -81,6 +81,23 @@ const aboutCardClass = "relative border border-[rgba(101,112,128,0.28)] bg-[line
             </h3>
             <p class="text-dark-lighter dark:text-light text-sm md:text-base">
               {t ? 'Sessions, live sync & collaborative features' : 'جلسات، مزامنة فورية، وميزات تعاونية'}
+            </p>
+          </div>
+        </div>
+
+        <div class={cn("flex items-start gap-4 px-4 py-5 md:p-6 rounded-md", aboutCardClass)}>
+          <div class="text-primary dark:text-primary-lighter mt-1 shrink-0">
+            <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="light-text-gradient w-fit font-medium text-xl md:text-2xl mb-1">
+              {t ? 'Education' : 'التعليم'}
+            </h3>
+            <p class="text-dark-lighter dark:text-light text-sm md:text-base">
+              {t ? 'Umm Al-Qura University · CS' : 'جامعة أم القرى · علوم الحاسب'}
             </p>
           </div>
         </div>
