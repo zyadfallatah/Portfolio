@@ -31,12 +31,9 @@ const isEn = lang === "en"
   }
 </style>
 
-<script>
-  const projectName = window.location.pathname.split('/').at(-1);
-  const response = await fetch(`/api/${projectName}.json`)
-  const currentProject = await response.json()
-  const video = document.getElementById("video") as HTMLVideoElement
-  const btns = document.getElementById("buttons") as HTMLButtonElement
+<script define:vars={{ videosUrls }}>
+  const video = document.getElementById("video");
+  const btns = document.getElementById("buttons");
   for (let i = 0; i < btns?.children.length; i++) {
     const btn = btns.children.item(i);
     btn?.addEventListener("click", (e) => {
@@ -45,7 +42,7 @@ const isEn = lang === "en"
         btns.children.item(j)?.classList.remove("active");
       }
       // Add 'active' to the clicked button
-      (e.currentTarget as HTMLElement).classList.add("active");
-      video.src = `${currentProject?.videosUrls?.at(i)?.url ?? ""}`;
+      e.currentTarget.classList.add("active");
+      video.src = videosUrls[i]?.url ?? "";
     });
   }
